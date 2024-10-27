@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ScoreSheetButton } from "./resources/ScoreSheetButton";
+import { StudentResourcesBtn } from "./resources/StudentResourcesBtn";
 
 export const HeroPage = () => {
   return (
@@ -43,16 +45,8 @@ export const HeroPage = () => {
               draggable="false"
             />
           </div>
-          <div className="cursor-pointer">
-            <Image
-              src="/images/Secondary Button Container.svg"
-              alt="Logo"
-              width={50}
-              height={50}
-              className="w-full max-w-[191px]"
-              draggable="false"
-            />
-          </div>
+         
+          <ScoreSheetButton />
         </div>
 
         {/* Character Images */}
@@ -106,16 +100,8 @@ export const HeroPage = () => {
               draggable="false"
             />
           </div>
-          <div className="cursor-pointer">
-            <Image
-              src="/images/student-resources.svg"
-              alt="Logo"
-              width={50}
-              height={50}
-              className="w-full max-w-[191px]"
-              draggable="false"
-            />
-          </div>
+       
+          <StudentResourcesBtn />
         </div>
       </div>
 
