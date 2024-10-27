@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Spin, notification } from "antd";
 import Image from "next/image";
-import { useRouter } from "next/navigation"; // Import useRouter
+import { useRouter } from "next/navigation"; 
+import Link from "next/link";
 
 const SignupForm = () => {
   const router = useRouter(); // Initialize useRouter
@@ -112,8 +113,19 @@ const SignupForm = () => {
                     />
                   </div>
                 ))}
+                     
               </div>
             </div>
+            <div className="flex justify-center items-center">
+                <p className="text-base">
+                  Already have a nickname?{" "}
+                  <Link href="/signup">
+                    <span className="text-[#652D90] text-sm text-center">
+                      Play Activities
+                    </span>
+                  </Link>
+                </p>
+              </div>
           </>
         ) : (
           // Step 2: Form with name and email
