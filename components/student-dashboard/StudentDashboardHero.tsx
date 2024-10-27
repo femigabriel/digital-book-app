@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export const ActivitiesHero = () => {
+export const StudentDashboardHero = () => {
   return (
     <div className="w-full min-h-screen bg-[#FFFEE9] flex flex-col justify-between">
       {/* Hero Image */}
@@ -16,7 +16,7 @@ export const ActivitiesHero = () => {
         />
       </div>
 
-      <div className="flex justify-between px-10 my-7">
+      <div className="flex justify-between px-10 my-">
         <Link href="/">
           <div className="cursor-pointer">
             <Image

@@ -1,29 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, notification } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; // Import useRouter for navigation
+import { useRouter } from "next/navigation";
 
 export const LoginPage = () => {
   const router = useRouter();
   const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false); // State to manage loading
 
   const onFinish = async (values: { name: string }) => {
+    console.log("Submitting login with values:", values); // Log input values
+    setLoading(true);
     try {
       const response = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-
+  
+      console.log("Response status:", response.status); // Log response status
       const data = await response.json();
-
+  
+      console.log("Response data:", data); // Log the response data
+  
       if (data.success) {
         notification.success({
           message: "Login Successful",
           description: data.message,
         });
-        router.push("/activities"); 
+        localStorage.setItem("user-id", data.userId); // Change to "user-id"
+        router.push("/student-dashboard");
       } else {
         throw new Error(data.message);
       }
@@ -32,8 +39,13 @@ export const LoginPage = () => {
         message: "Login Failed",
         description: error.message,
       });
+    } finally {
+      setLoading(false);
     }
   };
+  
+  
+  
 
   return (
     <div className="login">
@@ -57,7 +69,13 @@ export const LoginPage = () => {
               Forgot Nickname?
             </span>
             <Form.Item className="mt-5">
-              <Button type="primary" className="bg-[#FAD8E3]" htmlType="submit" block>
+              <Button
+                type="primary"
+                className="bg-[#FAD8E3]"
+                htmlType="submit"
+                block
+                loading={loading} // Use loading prop
+              >
                 <Image
                   src="/images/login-btn.svg"
                   alt="Contact Illustration"

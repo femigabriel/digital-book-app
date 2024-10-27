@@ -1,17 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import mongoose from "mongoose";
-import User from "@/models/User"; // Adjust path to your User model
-
-// Connect to MongoDB
-const connectDB = async () => {
-  if (mongoose.connections[0].readyState) return;
-  await mongoose.connect(process.env.MONGODB_URI!);
-};
+import dbConnect from "@/lib/dbConnect"; // Ensure you import your dbConnect function
+import User from "@/models/User"; // Adjust the path to your User model
 
 export async function POST(req: NextRequest) {
   const { name } = await req.json();
   
-  await connectDB();
+  await dbConnect(); // Ensure the DB is connected
 
   try {
     const user = await User.findOne({ name });
@@ -24,7 +18,7 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json(
-      { message: "Login successful", success: true },
+      { message: "Login successful", success: true, userId: user._id }, // Include user ID if needed
       { status: 200 }
     );
   } catch (error) {
