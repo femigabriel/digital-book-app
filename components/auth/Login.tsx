@@ -23,7 +23,7 @@ export const LoginPage = () => {
           message: "Login Successful",
           description: data.message,
         });
-        router.push("/dashboard"); // Redirect to dashboard or any secured page
+        router.push("/activities"); 
       } else {
         throw new Error(data.message);
       }

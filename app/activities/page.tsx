@@ -1,13 +1,14 @@
 "use client";
 
-import { ContactPage } from "@/components/contact-us/ContactPage";
+import { ActivitiesPage } from "@/components/activities/ActivitiesPage";
+
 
 
 
 export default function ContactUs() {
   return (
     <div>
-      <ContactPage />
+      <ActivitiesPage />
     </div>
   );
 }

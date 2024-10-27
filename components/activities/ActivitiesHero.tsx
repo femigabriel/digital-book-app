@@ -16,6 +16,36 @@ export const ActivitiesHero = () => {
         />
       </div>
 
+      <div className="flex justify-between px-10 my-7">
+        <Link href="/">
+          <div className="cursor-pointer">
+            <Image
+              src="/images/Button-1.svg"
+              alt="about-us"
+              width={191}
+              height={50}
+              className="max-w-[191px]"
+              draggable="false"
+            />
+          </div>
+        </Link>
+
+        <Link href="/">
+          <div className="cursor-pointer">
+            <Image
+              src="/images/Button-2.svg"
+              alt="about-us"
+              width={50}
+              height={50}
+              className="w-full max-w-[191px]"
+              draggable="false"
+            />
+          </div>
+        </Link>
+
+
+      </div>
+
       {/* Footer Navigation */}
       <div className="flex justify-center items-center gap-5 w-full mb-7">
         <Link href="/">
@@ -66,7 +96,7 @@ export const ActivitiesHero = () => {
             />
           </div>
         </Link>
-      
+
         <Link href="/contact-us">
           <div className="cursor-pointer">
             <Image
@@ -79,7 +109,6 @@ export const ActivitiesHero = () => {
             />
           </div>
         </Link>
-
       </div>
     </div>
   );

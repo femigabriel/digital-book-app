@@ -119,7 +119,7 @@ const SignupForm = () => {
             <div className="flex justify-center items-center">
                 <p className="text-base">
                   Already have a nickname?{" "}
-                  <Link href="/signup">
+                  <Link href="/login">
                     <span className="text-[#652D90] text-sm text-center">
                       Play Activities
                     </span>
