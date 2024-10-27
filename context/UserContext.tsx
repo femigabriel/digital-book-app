@@ -1,6 +1,8 @@
+// context/UserContext.tsx
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface User {
   name: string;
@@ -13,39 +15,33 @@ export const useUser = () => useContext(UserContext);
 
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchUser = async () => {
+      const userId = localStorage.getItem("user-id");
+      if (!userId) return;
+
       try {
-        const userId = localStorage.getItem("user-id"); // Make sure this key matches
-        console.log("Retrieved User ID from localStorage:", userId);
-    
-        if (!userId) {
-          console.error("User ID not found");
-          return;
-        }
-    
         const res = await fetch(`/api/user`, {
-          headers: { "user-id": userId }
+          headers: { "user-id": userId },
         });
-    
-        console.log("API Response Status:", res.status);
-    
-        if (!res.ok) {
-          console.error("Failed to fetch user data:", res.statusText);
-          return;
+        
+        if (res.ok) {
+          const data = await res.json();
+          setUser(data.user); // Populate user data
+        } else {
+          // Redirect to home if fetching fails
+          router.push("/");
         }
-    
-        const data = await res.json();
-        console.log("Fetched User Data:", data);
-        setUser(data.user); // Assuming the API response has the structure { user: { name, avatar } }
       } catch (error) {
         console.error("Error fetching user data:", error);
+        router.push("/"); // Redirect on error
       }
     };
-    
+
     fetchUser();
-  }, []);
+  }, [router]);
 
   return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
 };

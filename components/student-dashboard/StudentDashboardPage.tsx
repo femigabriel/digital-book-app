@@ -1,15 +1,17 @@
 import React from "react";
 import { StudentDashboardHeader } from "./StudentDashboardHeader";
 import { StudentDashboardHero } from "./StudentDashboardHero";
-
+import { ProtectedRoute } from "../ProtectedRoute";
 
 export const StudentDashboardPage = () => {
   return (
-    <div className="w-full">
-     <StudentDashboardHeader />
-      <div>
-        <StudentDashboardHero />
+    <ProtectedRoute>
+      <div className="w-full">
+        <StudentDashboardHeader />
+        <div>
+          <StudentDashboardHero />
+        </div>
       </div>
-    </div>
+    </ProtectedRoute>
   );
 };
