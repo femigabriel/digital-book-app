@@ -15,8 +15,8 @@ export default function ReadBookPage() {
         <HTMLFlipBook
           width={500}
           height={600}
-          className="bg-white shadow-md rounded-sm"
-          style={{ background: "#e1d1f" }}
+          className="bg-[#FFFEE9] shadow-lg rounded"
+          style={{ background: "#FFFEE9" }}
           startPage={0}
           flippingTime={1000}
           size={"fixed"}
@@ -38,14 +38,16 @@ export default function ReadBookPage() {
           disableFlipByClick={false}
         >
           {/* 1st page */}
-          <div>
-            <Image
-              width={300}
-              height={300}
-              src="/assets/illustrators/book-cover-1.svg"
-              className="w-full h-full cursor-pointer"
-              alt="avatar"
-            />
+          <div className="bg-[#E1D1F6] h-full w-full flex justify-center items-center">
+            <div className="h-full w-full bg-[#E1D1F6] px-5 lg:px-10 lg:py-5">
+              <Image
+                width={300}
+                height={300}
+                src="/assets/illustrators/book-cover-1.svg"
+                className="w-full h-full cursor-pointer"
+                alt="avatar"
+              />
+            </div>
           </div>
 
           <div className="bg-[#F8F8F8]">
@@ -782,14 +784,16 @@ Mya continues to cry but then gathers herself to speak."
           </div>
 
           {/* closig page page */}
-          <div>
-            <Image
-              width={300}
-              height={300}
-              src="/assets/illustrators/back cover book.svg"
-              className="w-full h-full cursor-pointer"
-              alt="avatar"
-            />
+          <div className="bg-[#E1D1F6] h-full w-full flex justify-center items-center">
+            <div className="h-full w-full bg-[#E1D1F6] px-5 lg:px-10 lg:py-5">
+              <Image
+                width={300}
+                height={300}
+                src="/assets/illustrators/back cover book.svg"
+                className="w-full h-full cursor-pointer"
+                alt="avatar"
+              />
+            </div>
           </div>
           <div className="bg-[#F8F8F8]">
             <Image
