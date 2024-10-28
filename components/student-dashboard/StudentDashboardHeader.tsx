@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useUser } from "@/context/UserContext";
-import { DownOutlined, SmileOutlined } from "@ant-design/icons";
+import { DownOutlined, SmileOutlined, BookOutlined, StarOutlined, TrophyOutlined, DollarOutlined, UserAddOutlined, LogoutOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Dropdown, Space } from "antd";
 
@@ -13,46 +13,63 @@ export const StudentDashboardHeader = () => {
     {
       key: "1",
       label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          1st menu item
-        </a>
+        <Link href="/read-book">
+          <span className="text-sm font-bold text-[#652D90]">Read Books</span>
+        </Link>
       ),
+      icon: <BookOutlined />,
     },
     {
       key: "2",
       label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          2nd menu item (disabled)
-        </a>
+        <Link href="/activitis">
+          <span className="text-sm font-bold text-[#652D90]">Activities</span>
+        </Link>
       ),
       icon: <SmileOutlined />,
-      disabled: true,
     },
     {
       key: "3",
       label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.luohanacademy.com"
-        >
-          3rd menu item (disabled)
-        </a>
+        <Link href="/purchase-books">
+          <span className="text-sm font-bold text-[#652D90]">Purchase Books</span>
+        </Link>
       ),
-      disabled: true,
+      icon: <DollarOutlined />,
     },
     {
       key: "4",
+      label: (
+        <Link href="/leaderboard">
+          <span className="text-sm font-bold text-[#652D90]">Leaderboard</span>
+        </Link>
+      ),
+      icon: <StarOutlined />,
+    },
+    {
+      key: "5",
+      label: (
+        <Link href="/scores">
+          <span className="text-sm font-bold text-[#652D90]">Scores</span>
+        </Link>
+      ),
+      icon: <TrophyOutlined />,
+    },
+    
+    {
+      key: "6",
+      label: (
+        <Link href="/change-avatar">
+          <span className="text-sm font-bold text-[#652D90]">Change Avatar</span>
+        </Link>
+      ),
+      icon: <UserAddOutlined />,
+    },
+    {
+      key: "7",
       danger: true,
-      label: "a danger item",
+      label: "Logout",
+      icon: <LogoutOutlined />,
     },
   ];
 
@@ -80,17 +97,15 @@ export const StudentDashboardHeader = () => {
                 height={50}
                 className="rounded-full"
               />
-
               <span className="text-lg font-medium">{user.name}</span>
             </>
           )}
           <Dropdown menu={{ items }}>
-            <a onClick={(e) => e.preventDefault()}>
+            <div onClick={(e) => e.preventDefault()}>
               <Space>
-                Hover me
                 <DownOutlined />
               </Space>
-            </a>
+            </div>
           </Dropdown>
         </div>
       </header>
