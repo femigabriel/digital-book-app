@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Button, Progress } from "antd";
+import Link from "next/link";
 
 export const BooksList = () => {
   // Progress values for each book
@@ -28,10 +29,23 @@ export const BooksList = () => {
               draggable="false"
             />
           </div>
-          <Progress percent={progress1} size="small" className="my-3" strokeColor="#92E3A9" />
-          <Button type="primary" className="bg-[#FAD8E3] mt-2" htmlType="submit" block>
-            <Image src="/images/play-button.svg" alt="Play Button" width={516} height={59} className="max-w-full h-auto" />
-          </Button>
+          <Progress
+            percent={progress1}
+            size="small"
+            className="my-3"
+            strokeColor="#92E3A9"
+          />
+          <Link href="/read-book">
+            <button className="bg-[#FAD8E3] mt-2 hover:bg-none">
+              <Image
+                src="/images/play-button.svg"
+                alt="Play Button"
+                width={516}
+                height={59}
+                className="max-w-full h-auto"
+              />
+            </button>
+          </Link>
         </div>
 
         {/* Book 2 */}
@@ -46,9 +60,25 @@ export const BooksList = () => {
               draggable="false"
             />
           </div>
-          <Progress percent={progress2} size="small" className="my-3" strokeColor="#92E3A9" />
-          <Button type="primary" className="bg-[#FAD8E3] mt-2" htmlType="submit" block>
-            <Image src="/images/play-button.svg" alt="Play Button" width={516} height={59} className="max-w-full h-auto" />
+          <Progress
+            percent={progress2}
+            size="small"
+            className="my-3"
+            strokeColor="#92E3A9"
+          />
+          <Button
+            type="primary"
+            className="bg-[#FAD8E3] mt-2"
+            htmlType="submit"
+            block
+          >
+            <Image
+              src="/images/play-button.svg"
+              alt="Play Button"
+              width={516}
+              height={59}
+              className="max-w-full h-auto"
+            />
           </Button>
         </div>
 
@@ -64,9 +94,25 @@ export const BooksList = () => {
               draggable="false"
             />
           </div>
-          <Progress percent={progress3} size="small" className="my-3" strokeColor="#92E3A9" />
-          <Button type="primary" className="bg-[#FAD8E3] mt-2" htmlType="submit" block>
-            <Image src="/images/play-button.svg" alt="Play Button" width={516} height={59} className="max-w-full h-auto" />
+          <Progress
+            percent={progress3}
+            size="small"
+            className="my-3"
+            strokeColor="#92E3A9"
+          />
+          <Button
+            type="primary"
+            className="bg-[#FAD8E3] mt-2"
+            htmlType="submit"
+            block
+          >
+            <Image
+              src="/images/play-button.svg"
+              alt="Play Button"
+              width={516}
+              height={59}
+              className="max-w-full h-auto"
+            />
           </Button>
         </div>
       </div>
@@ -84,9 +130,25 @@ export const BooksList = () => {
               draggable="false"
             />
           </div>
-          <Progress percent={progress4} size="small" className="my-3" strokeColor="#92E3A9" />
-          <Button type="primary" className="bg-[#FAD8E3] mt-2" htmlType="submit" block>
-            <Image src="/images/play-button.svg" alt="Play Button" width={516} height={59} className="max-w-full h-auto" />
+          <Progress
+            percent={progress4}
+            size="small"
+            className="my-3"
+            strokeColor="#92E3A9"
+          />
+          <Button
+            type="primary"
+            className="bg-[#FAD8E3] mt-2"
+            htmlType="submit"
+            block
+          >
+            <Image
+              src="/images/play-button.svg"
+              alt="Play Button"
+              width={516}
+              height={59}
+              className="max-w-full h-auto"
+            />
           </Button>
         </div>
 
@@ -102,9 +164,25 @@ export const BooksList = () => {
               draggable="false"
             />
           </div>
-          <Progress percent={progress5} size="small" className="my-3" strokeColor="#92E3A9" />
-          <Button type="primary" className="bg-[#FAD8E3] mt-2" htmlType="submit" block>
-            <Image src="/images/play-button.svg" alt="Play Button" width={516} height={59} className="max-w-full h-auto" />
+          <Progress
+            percent={progress5}
+            size="small"
+            className="my-3"
+            strokeColor="#92E3A9"
+          />
+          <Button
+            type="primary"
+            className="bg-[#FAD8E3] mt-2"
+            htmlType="submit"
+            block
+          >
+            <Image
+              src="/images/play-button.svg"
+              alt="Play Button"
+              width={516}
+              height={59}
+              className="max-w-full h-auto"
+            />
           </Button>
         </div>
 
@@ -120,9 +198,25 @@ export const BooksList = () => {
               draggable="false"
             />
           </div>
-          <Progress percent={progress6} size="small" className="my-3" strokeColor="#92E3A9" />
-          <Button type="primary" className="bg-[#FAD8E3] mt-2" htmlType="submit" block>
-            <Image src="/images/play-button.svg" alt="Play Button" width={516} height={59} className="max-w-full h-auto" />
+          <Progress
+            percent={progress6}
+            size="small"
+            className="my-3"
+            strokeColor="#92E3A9"
+          />
+          <Button
+            type="primary"
+            className="bg-[#FAD8E3] mt-2"
+            htmlType="submit"
+            block
+          >
+            <Image
+              src="/images/play-button.svg"
+              alt="Play Button"
+              width={516}
+              height={59}
+              className="max-w-full h-auto"
+            />
           </Button>
         </div>
       </div>
