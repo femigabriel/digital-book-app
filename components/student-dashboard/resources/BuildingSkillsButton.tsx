@@ -10,11 +10,11 @@ export const BuildingSkillsButton = () => {
   const items: MenuProps["items"] = [
     {
       label: (
-        <Link href="/">
+        <Link href="/student-dashboard/relationship-skills">
           <div className="cursor-pointer resources">
             <Image
               src="/images/Drop1.svg"
-              alt="resources"
+              alt="relationship-skills"
               width={191}
               height={50}
               className="max-w-[191px]"

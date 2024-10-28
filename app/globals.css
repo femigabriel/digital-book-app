@@ -181,5 +181,20 @@ display: none;
   background-color: #652D90;
 }
 .ant-dropdown .ant-dropdown-menu {
-  background: #FFFA91 !important;
+  background: #FFFA91;
+}
+.header .ant-dropdown .ant-dropdown-menu {
+  background: #FDC4BB;
+  
+}
+
+.relationship-skill {
+  background-image: url(../public/images/19.svg);
+  background-position: right;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -74,7 +74,7 @@ export const StudentDashboardHeader = () => {
   ];
 
   return (
-    <div className="w-full bg-[#FFFEE9] px-10 py-5">
+    <div className="w-full bg-[#FFFEE9] px-10 py-5 header">
       <header className="flex justify-between h-[90px] shadow">
         <div>
           <Link href="/">
