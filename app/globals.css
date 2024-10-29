@@ -283,9 +283,12 @@ body::-webkit-scrollbar-thumb {
   background-image: url(../public/images/Background-bus.svg);
   background-position: right;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.bus-stop .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
+background-color: #652d90;
 }

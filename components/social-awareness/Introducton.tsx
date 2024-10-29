@@ -8,9 +8,8 @@ interface Props {
   onBackClick: () => any;
 }
 
-// export const Introducton = ({ onNextClick, onBackClick }: Props) => {
-export const Introducton = () => {
-  const router = useRouter(); // Initialize useRouter
+export const Introducton = ({ onNextClick, onBackClick }: Props) => {
+  const router = useRouter(); 
 
   const handleQuit = () => {
     Modal.confirm({
@@ -91,7 +90,7 @@ export const Introducton = () => {
             <div className="mt-7 flex justify-center w-full items-center">
               <button
                 className="bg-[#FAD8E3] w-full"
-                // onClick={onNextClick}
+                onClick={onNextClick}
               >
                 <Image
                   src="/images/Button Wrapper.svg"
