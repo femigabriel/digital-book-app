@@ -1,9 +1,47 @@
 import React from "react";
 import Image from "next/image";
 
-export const Introducton = () => {
+
+interface Props {
+    onNextClick: () => any;
+    onBackClick: () => any;
+  
+  }
+  
+  
+  export const Introducton = ({ onNextClick, onBackClick }: Props) => {
   return (
-    <div className="relationship-skill w-full h-screen bg-[#ECE0F5]">
+   <div className="w-full">
+     <div className="px-10 py-5 h-[90px] bg-[#ECE0F5] shadow flex justify-between items-center">
+      <div className="div">
+        <button className=" w-full" 
+        onClick={onBackClick}
+        >
+          <Image
+            src="/images/Back Button.svg"
+            alt="Back Button"
+            width={115}
+            height={45}
+            className="max-w-full h-auto"
+            draggable="false"
+          />
+        </button>
+      </div>
+      <div className="div">
+        <button className=" w-full">
+          <Image
+            src="/images/Frame 110.svg"
+            alt="more info"
+            width={251}
+            height={45}
+            className="max-w-full h-auto"
+            draggable="false"
+          />
+        </button>
+      </div>
+    </div>
+
+     <div className="relationship-skill w-full h-screen bg-[#ECE0F5]">
     <div className=" bg-[#ECE0F5] w-full max-w-[750px] flex justify-center rounded-[10px] shadow-xl items-center ">
       <div className="px-5 py-5">
         <div className="flex flex-col justify-center items-center">
@@ -34,7 +72,7 @@ export const Introducton = () => {
           </p>
         </div>
         <div className="mt-7 flex justify-center w-full items-center">
-          <button className="bg-[#FAD8E3] w-full">
+          <button className="bg-[#FAD8E3] w-full"  onClick={onNextClick}>
             <Image
               src="/images/Button Wrapper.svg"
               alt="Contact Illustration"
@@ -47,5 +85,6 @@ export const Introducton = () => {
       </div>
     </div>
   </div>
+   </div>
   )
 }
