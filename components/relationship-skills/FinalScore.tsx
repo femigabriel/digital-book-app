@@ -21,9 +21,9 @@ export const FinalScore = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen final-score relative">
+    <div className="flex justify-center items-center min-h-screen final-score relative bg-[#ECE0F5]">
       {showConfetti && <ConfettiAnimation />}
-      <div className="px-5 py-7 flex justify-center items-center w-[450px] rounded-lg shadow-md bg-[#FAD8E3]">
+      <div className="px-5 py-7 flex justify-center items-center w-full max-w-[500px]  rounded-lg shadow-md bg-[#FAD8E3]">
         <div>
           <div className="flex justify-center items-center mb-2">
             <Image src="/icons/emoji-happy.svg" alt="Logo" width={50} height={50} />
