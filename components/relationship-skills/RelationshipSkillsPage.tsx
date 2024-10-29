@@ -3,6 +3,8 @@ import { Introducton } from "./Introducton";
 import { RelationshipSkillsHeader } from "./RelationshipSkillsHeader";
 import { SkillsList } from "./SkillsList";
 import { Activity1 } from "./Activity1";
+import { Activity2 } from "./Activity2";
+import { Activity3 } from "./Activity3";
 
 export const RelationshipSkillsPage = () => {
   return (
@@ -12,6 +14,8 @@ export const RelationshipSkillsPage = () => {
         <Introducton />
         <SkillsList />
         <Activity1 />
+        <Activity2 />
+        <Activity3 />
       </div>
     </div>
   );

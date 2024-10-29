@@ -1,40 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 
-export const Activity1 = () => {
-  const [firstAns, setfirstAns] = useState("");
-  const [secondAns, setsecondAns] = useState("");
-  const [errorFirst, setErrorFirst] = useState(false);
-  const [errorSecond, setErrorSecond] = useState(false);
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-
-    if (hasInValidData()) {
-      return;
-    }
-    // onNextClick();
-  };
-
-  const hasInValidData = () => {
-    let response = false;
-    if (!firstAns || firstAns.toLowerCase() !== "empathy") {
-      setErrorFirst(true);
-      response = true;
-    } else {
-      setErrorFirst(false);
-      response = false;
-    }
-    if (!secondAns || secondAns.toLowerCase() !== "consideration") {
-      setErrorSecond(true);
-      response = true;
-    } else {
-      setErrorSecond(false);
-      response = false;
-    }
-    return response;
-  };
-
+export const Activity3 = () => {
   return (
     <div className="relationship-skill w-full h-screen bg-[#ECE0F5]">
       <div className=" bg-[#ECE0F5] w-full max-w-[750px] rounded-[10px] shadow-xl ">
@@ -55,21 +22,19 @@ export const Activity1 = () => {
           </div>
           <div className="mt-3">
             <p className="text-sm">
-              1. Charlie’s mother said, “Some kids are not only away from
-              parents but they have also left their home.” Charlie said, “That’s
-              horrible,” and she began to cry.
+              3. Charlie’s friend Mya had to run to catch the school bus. Her
+              hair was not combed and her clothes were a mess. Mya looked very
+              upset and began to cry. The other children were very mean to Mya.
+              Charlie encouraged Mya and helped her fix her hair.
             </p>
             <div className="lg:flex gap-3 w-full mt-3">
-              <span className="text-sm font-semibold">Charlie is showing</span>
+              <span className="text-sm font-semibold">
+              Which Relationship Skill best fits her actions?
+              </span>
               <input
                 type="text"
-                className="w-full max-w-[550px] bg-inherit border border-[#303030] border-x-0 border-t-0"
+                className="w-full max-w-[400px] bg-inherit border border-[#303030] border-x-0 border-t-0"
               />
-                {errorFirst && (
-                  <div className="text-[#F13737] text-[0.750em]">
-                    *Incorrect Answer, *Hint "empathy"
-                  </div>
-                )}
             </div>
           </div>
 
