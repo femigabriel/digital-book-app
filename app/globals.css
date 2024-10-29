@@ -145,9 +145,9 @@ body::-webkit-scrollbar-thumb {
   background-repeat: no-repeat;
   height: 100vh;
   width: 100%;
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login {
@@ -161,7 +161,6 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
 }
 
-
 .avatar-container::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -172,20 +171,19 @@ body::-webkit-scrollbar-thumb {
   width: 5px;
   height: 2px;
   background-color: #eaf5fae0;
-display: none;
+  display: none;
 }
 
 .avatar-container::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #652D90;
+  background-color: #652d90;
 }
 .ant-dropdown .ant-dropdown-menu {
-  background: #FFFA91;
+  background: #fffa91;
 }
 .header .ant-dropdown .ant-dropdown-menu {
-  background: #FDC4BB;
-  
+  background: #fdc4bb;
 }
 
 .relationship-skill {
@@ -280,4 +278,14 @@ display: none;
 .confetti:nth-child(even) {
   animation-duration: 3s;
   font-size: 2.2rem;
+}
+.bus-stop {
+  background-image: url(../public/images/Background-bus.svg);
+  background-position: right;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -4,7 +4,7 @@ import Image from "next/image";
 export const FinalScore = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   const celebrationSound = "/sounds/756229__timbre__yeah-man-rock-roll.flac";
-  const score = 30; // Sample score, adjust if needed
+  const score = 30;
 
   useEffect(() => {
     // Play celebration sound and start confetti when the page loads
@@ -13,11 +13,11 @@ export const FinalScore = () => {
 
     // Start the confetti and balloon animation
     setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 5000); // Stop after 5 seconds
+    setTimeout(() => setShowConfetti(false), 5000);
   }, []);
 
   const handleSaveScore = () => {
-    console.log("Score saved:", score); // Replace this with actual save logic later
+    console.log("Score saved:", score);
   };
 
   return (
@@ -26,10 +26,19 @@ export const FinalScore = () => {
       <div className="px-5 py-7 flex justify-center items-center w-full max-w-[500px]  rounded-lg shadow-md bg-[#FAD8E3]">
         <div>
           <div className="flex justify-center items-center mb-2">
-            <Image src="/icons/emoji-happy.svg" alt="Logo" width={50} height={50} />
+            <Image
+              src="/icons/emoji-happy.svg"
+              alt="Logo"
+              width={50}
+              height={50}
+            />
           </div>
-          <h2 className="text-4xl font-bold text-[#FF4500] mb-3">🎉 Fantastic!!! 🎉</h2>
-          <p className="text-2xl font-semibold text-[#4CAF50] mb-1">You scored {score}/30!</p>
+          <h2 className="text-4xl font-bold text-[#FF4500] mb-3">
+            🎉 Fantastic!!! 🎉
+          </h2>
+          <p className="text-2xl font-semibold text-[#4CAF50] mb-1">
+            You scored {score}/30!
+          </p>
           <div className="mb-5 text-sm text-[#303030]">
             <p>You did a fantastic job on all activities!</p>
             <p>You really understand the relationship skills!</p>
@@ -51,7 +60,9 @@ const ConfettiAnimation = () => {
   return (
     <div className="confetti-container">
       {[...Array(30)].map((_, index) => (
-        <div key={index} className="confetti">🎈 🎉</div>
+        <div key={index} className="confetti">
+          🎈 🎉
+        </div>
       ))}
     </div>
   );

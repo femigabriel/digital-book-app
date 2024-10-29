@@ -18,7 +18,7 @@ export const Introducton = ({ onNextClick, onBackClick }: Props) => {
       okText: 'Yes, I’m sure!',
       cancelText: 'No, I want to stay!',
       onOk: () => {
-        router.push("/student-dashboard"); // Redirect to /student-dashboard
+        router.push("/student-dashboard"); 
       },
       onCancel: () => {
         // Do nothing on cancel
