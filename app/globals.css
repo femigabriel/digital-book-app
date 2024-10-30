@@ -292,3 +292,13 @@ body::-webkit-scrollbar-thumb {
 .bus-stop .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
 background-color: #652d90;
 }
+.good-decision {
+  background-image: url(../public/images/202.svg);
+  background-position: right;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

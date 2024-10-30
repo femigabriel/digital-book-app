@@ -40,8 +40,7 @@ export const BusStopFinalScore = () => {
             You scored {score}/20!
           </p>
           <div className="mb-5 text-sm text-[#303030]">
-            <p>You did a fantastic job on all activities!</p>
-            <p>You really understand the relationship skills!</p>
+            <p> You really understand the Bus Stop Bop!</p>
           </div>
           <button
             className="bg-[#8BC34A] text-white py-2 px-4 rounded-full text-lg font-bold hover:bg-[#7CB342] transition-all"
