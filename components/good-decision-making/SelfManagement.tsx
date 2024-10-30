@@ -104,21 +104,24 @@ export const SelfManagement = ({ onNextClick, onBackClick }: Props) => {
               </p>
               <div className="flex flex-col mb-5">
                 <div className="flex w-full gap-2 mb-5">
-                  <h3 className=" text-[#303030] font-bold ">Yes!</h3>
-                  <input
-                    type="text"
-                    className="input-field bg-inherit px-5 w-full max-w-[500px]"
-                  />
+                  <h3 className=" text-[#303030] mt-2 font-bold ">Yes!</h3>
+                  <div className="w-full">
+                    <input
+                      type="text"
+                      className="input-field bg-inherit px-5 w-full max-w-[500px]"
+                    />
+                  </div>
                 </div>
 
                 <div className="flex w-full gap-2">
-                  <h3 className=" text-[#303030] font-bold ">No!</h3>
-                  <input
-                    type="text"
-                    className="input-field bg-inherit px-5 w-full max-w-[500px]"
-                  />
+                  <h3 className=" text-[#303030] font-bold mt-2">No!</h3>
+                  <div className="w-full">
+                    <input
+                      type="text"
+                      className="input-field bg-inherit px-5 w-full max-w-[500px]"
+                    />
+                  </div>
                 </div>
-
               </div>
             </div>
 
