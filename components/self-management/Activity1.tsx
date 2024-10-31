@@ -1,62 +1,35 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { Radio, Button, Descriptions } from "antd"; // Import Radio and Button from Ant Design
+import { Radio } from "antd";
 
 interface Props {
   onNextClick: () => any;
   onBackClick: () => any;
 }
 
-export const SelfManagement = ({ onNextClick, onBackClick }: Props) => {
-  const questions = [
-    ,
-    {
-      id: 1,
-      title: "1. Cooperation",
-      Descriptions: "Working together to achieve a common goal.",
-    },
-    {
-      id: 2,
-      title: "2. Respectful",
-      Descriptions: "Treating others with kindness and consideration..",
-    },
-    {
-      id: 3,
-      title: "3. Argumentative",
-      Descriptions: "Always wanting to argue or disagree..",
-    },
-    {
-      id: 4,
-      title: "4. Complainer",
-      Descriptions: "Someone who often complains about things.",
-    },
-    {
-      id: 5,
-      title: "5. Encouraging",
-      Descriptions: "Offering support or confidence to someone.",
-    },
-  ];
+const questions = [
+  "Charlie said, 'That's what friends are for.'",
+  '"Thank you for everything," Mya said.',
+  '"Our moms are not going to be happy," Charlie said.',
+  'Charlie told Mya, "We will catch the bus."',
+  "The girls headed toward a big building.",
+  "Charlie stayed calm and spoke with confidence to answer Mya's question.",
+  '"Will we get in trouble?" Mya asked.',
+  "Mya cried whenever she thought about her dad.",
+  "Mya and Charlie decided to help Mr. Martinez.",
+];
 
-  // State to hold answers
-  const [answers, setAnswers] = useState<string[]>(
-    Array(questions.length).fill("")
-  );
+export const Activity1 = ({ onNextClick, onBackClick }: Props) => {
+  const [selectedValue, setSelectedValue] = useState<number | null>(null);
 
-  // Handle radio change
-  const handleRadioChange = (index: number, value: string) => {
-    const newAnswers = [...answers];
-    newAnswers[index] = value; // Update the answer for the question index
-    setAnswers(newAnswers);
-  };
-
-  const handleSubmit = () => {
-    console.log(answers); // Handle submit logic here (e.g., moving to the next activity)
+  const handleSelect = (value: number) => {
+    setSelectedValue(value);
   };
 
   return (
     <div className="w-full bg-[#ECE0F5]">
       <div className="px-10 py-5 h-[90px] bg-[#ECE0F5] shadow flex justify-between items-center">
-        <div className="div">
+        <div>
           <button className="w-full" onClick={onBackClick}>
             <Image
               src="/images/Back Button.svg"
@@ -68,7 +41,7 @@ export const SelfManagement = ({ onNextClick, onBackClick }: Props) => {
             />
           </button>
         </div>
-        <div className="div">
+        <div>
           <button className="w-full">
             <Image
               src="/images/Frame 110.svg"
@@ -81,7 +54,7 @@ export const SelfManagement = ({ onNextClick, onBackClick }: Props) => {
           </button>
         </div>
       </div>
-      <div className="good-decision w-full h-screen bg-[#ECE0F5]">
+      <div className="self-management w-full h-screen bg-[#ECE0F5]">
         <div className="bg-[#ECE0F5] w-full max-w-[750px] rounded-[10px] shadow-xl">
           <div className="px-5 py-5">
             <div className="flex flex-col justify-center items-center">
@@ -92,78 +65,35 @@ export const SelfManagement = ({ onNextClick, onBackClick }: Props) => {
               </p>
             </div>
             <div className="mt-7">
-              <h3 className="text-base font-bold text-[#652D90]">
-                Directions:
-              </h3>
-              <p className=" w-full text-sm mt-2 tracking-wide leading-[28.8px]">
+              <h3 className="text-base font-bold text-[#652D90]">Directions:</h3>
+              <p className="w-full text-sm mt-2 tracking-wide leading-[28.8px]">
                 Read each sentence carefully and choose the one that shows the
                 best example of self-management. Self-management is when someone
                 is in control of their feelings, actions, and behaviors, even
                 when things might be difficult or challenging.
               </p>
             </div>
-            {/* Questions and Radio Inputs */}
 
             <div className="mt-7">
-              <h3 className="text-base font-bold ">Answer Choices:</h3>
-
+              <h3 className="text-base font-bold">Answer Choices:</h3>
               <div className="mt-5">
-                <div className="flex w-full mb-5">
-                  <Radio value=""></Radio>
-                  <p className="flex gap-2">
-                    <span>1.</span>Charlie said, "That's what friends are for."
-                  </p>
-                </div>
-                <div className="flex w-full mb-5">
-                  <Radio value=""></Radio>
-                  <p className="flex gap-2">
-                    <span>2.</span>"Thank you for everything," Mya said.
-                  </p>
-                </div>
-                <div className="flex w-full mb-5">
-                  <Radio value=""></Radio>
-                  <p className="flex gap-2">
-                    <span>3.</span>"Our moms are not going to be happy," Charlie
-                    said.
-                  </p>
-                </div>
-                <div className="flex w-full mb-5">
-                  <Radio value=""></Radio>
-                  <p className="flex gap-2">
-                    <span>4.</span>Charlie told Mya, "We will catch the bus."
-                  </p>
-                </div>
-                <div className="flex w-full mb-5">
-                  <Radio value=""></Radio>
-                  <p className="flex gap-2">
-                    <span>5.</span>The girls headed toward a big building.
-                  </p>
-                </div>
-                <div className="flex w-full mb-5">
-                  <Radio value=""></Radio>
-                  <p className="flex gap-2">
-                    <span>6.</span>Charlie stayed calm and spoke with confidence
-                    to answer Mya's question.
-                  </p>
-                </div>
-                <div className="flex w-full mb-5">
-                  <Radio value=""></Radio>
-                  <p className="flex gap-2">
-                    <span>7.</span>"Will we get in trouble?" Mya asked.
-                  </p>
-                </div>
-                <div className="flex w-full mb-5">
-                  <Radio value=""></Radio>
-                  <p className="flex gap-2">
-                    <span>8.</span>Mya cried whenever she thought about her dad.
-                  </p>
-                </div>
-                <div className="flex w-full mb-5">
-                  <Radio value=""></Radio>
-                  <p className="flex gap-2">
-                    <span>9.</span>Mya and Charlie decided to help Mr. Martinez.
-                  </p>
-                </div>
+                {questions.map((question, index) => (
+                  <div
+                    key={index}
+                    className={`flex w-full mb-5 p-2 cursor-pointer rounded-lg ${
+                      selectedValue === index + 1 ? "bg-[#ED008C] text-white" : ""
+                    }`}
+                    onClick={() => handleSelect(index + 1)}
+                  >
+                    <Radio
+                      checked={selectedValue === index + 1}
+                      onChange={() => handleSelect(index + 1)}
+                    />
+                    <p className="flex gap-2">
+                      <span>{index + 1}.</span> {question}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 

@@ -302,3 +302,13 @@ background-color: #652d90;
   justify-content: center;
   align-items: center;
 }
+.self-management  {
+  background-image: url(../public/images/image\ 232.svg);
+  background-position: right;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

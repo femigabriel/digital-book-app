@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Introducton } from "./Introducton";
-import { SelfManagement } from "./SelfManagement";
-import { BusStopFinalScore } from "../social-awareness/BusStopFinalScore";
+import { Activity1 } from "./Activity1";
+import { GoodDecisionFinalScore } from "./GoodDecisionFinalScore";
+
 
 export const GoodDecisionMakingPage = () => {
     const [step, setStep] = useState(0);
@@ -17,10 +18,10 @@ export const GoodDecisionMakingPage = () => {
           );
   
         case 1:
-          return <SelfManagement onNextClick={handleNext} onBackClick={handleBack} />;
+          return <Activity1 onNextClick={handleNext} onBackClick={handleBack} />;
        
         default:
-          return <BusStopFinalScore />;
+          return <GoodDecisionFinalScore />;
       }
     };
   
