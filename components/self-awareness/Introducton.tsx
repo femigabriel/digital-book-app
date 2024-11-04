@@ -55,8 +55,8 @@ export const Introducton = ({ onNextClick, onBackClick }: Props) => {
         </div>
       </div>
 
-      <div className="self-awareness w-full h-screen bg-[#ECE0F5]">
-        <div className="bg-[#ECE0F5] w-full max-w-[750px] flex justify-center rounded-[10px] shadow-xl items-center">
+      <div className="self-awareness w-full h-screen bg-[#FFFEE9]">
+        <div className="bg-[#FFFEE9] w-full max-w-[750px] flex justify-center rounded-[10px] shadow-xl items-center">
           <div className="px-5 py-5">
             <div className="flex flex-col justify-center items-center">
               <h3 className="text-[#CA0077] text-xl">

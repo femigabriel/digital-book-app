@@ -33,7 +33,7 @@ export const Activity1 = ({ onNextClick, onBackClick }: Props) => {
 
   return (
     <div className="w-full">
-    <div className="px-10 py-5 h-[90px] bg-[#ECE0F5] shadow flex justify-between items-center">
+    <div className="px-10 py-5 h-[90px] activity-header shadow flex justify-between items-center">
      <div className="div">
        <button className=" w-full" 
        onClick={onBackClick}
@@ -61,8 +61,8 @@ export const Activity1 = ({ onNextClick, onBackClick }: Props) => {
        </button>
      </div>
    </div>
-    <div className="relationship-skill w-full h-screen bg-[#ECE0F5]">
-      <div className="bg-[#ECE0F5] w-full max-w-[750px] rounded-[10px] shadow-xl">
+    <div className="relationship-skill w-full h-screen bg-[#82B77C]">
+      <div className="bg-[#FFFEE9] w-full max-w-[750px] rounded-[10px] shadow-xl">
         <div className="px-5 py-5">
           <div className="flex flex-col justify-center items-center">
             <h3 className="text-[#CA0077] text-xl">Activity</h3>
