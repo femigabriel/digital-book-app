@@ -44,7 +44,7 @@ export const FinalScore = ({ score }: FinalScoreProps) => {
   };
 
   return (
-    <div className="bg-[#FAD8E3]">
+    <div className="bg-[#FAD8E3] w-full !h-screen">
       <div className="flex justify-between items-center px-10 py-5 h-[90px] bg-[#FAD8E3] shadow">
         <button className="w-full" onClick={handleQuit}>
           <Image
@@ -64,7 +64,7 @@ export const FinalScore = ({ score }: FinalScoreProps) => {
           )}
         </button>
       </div>
-      <div className="flex justify-center items-center min-h-screen bg-[#FAD8E3]">
+      <div className="flex justify-center items-center h-screen bg-[#FAD8E3]">
         {showConfetti && <ConfettiAnimation />}
         <div className="px-5 py-7 flex justify-center items-center w-full max-w-[700px] rounded-lg shadow-md bg-[#FFFEE9]">
           <div className="w-full text-center">
