@@ -24,33 +24,28 @@ const options = [
 ];
 
 interface Props {
-  onNextClick: () => any;
+  onNextClick: (isCorrect: boolean) => any;
   onBackClick: () => any;
 }
 
 export const Activity3 = ({ onNextClick, onBackClick }: Props) => {
   const [selected, setSelected] = useState("");
-  const [isCorrect, setIsCorrect] = useState(false);
   const [error, setError] = useState(false);
 
   const handleOnClick = (answer: string) => {
     setSelected(answer);
     setError(false); // Reset error on new selection
-    setIsCorrect(false); // Reset correct state on new selection
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const correctOption = options.find((option) => option.correctAns);
 
-    // Only proceed if the selected answer is correct
     if (selected === correctOption?.text) {
-      setIsCorrect(true);
-      setError(false);
-      onNextClick();
+      onNextClick(true); // Pass `true` if the answer is correct
     } else {
-      setIsCorrect(false);
       setError(true);
+      onNextClick(false); // Pass `false` if the answer is incorrect
     }
   };
 
@@ -112,6 +107,7 @@ export const Activity3 = ({ onNextClick, onBackClick }: Props) => {
                 <span className="text-sm font-semibold mb-2">
                   Which Relationship Skill best fits her actions?
                 </span>
+               
                 <div>
                   {options.map((option) => (
                     <div
@@ -130,14 +126,8 @@ export const Activity3 = ({ onNextClick, onBackClick }: Props) => {
                     *Incorrect answer, please try again.
                   </div>
                 )}
-                {isCorrect && (
-                  <div className="text-[#28A745] text-[0.750em] font-bold mt-2">
-                    ✓ Correct Answer
-                  </div>
-                )}
               </div>
             </div>
-
             <div className="mt-7">
               <button type="submit" className="bg-[#FAD8E3] w-full">
                 <Image
