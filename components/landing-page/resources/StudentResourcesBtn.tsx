@@ -27,7 +27,7 @@ export const StudentResourcesBtn = () => {
     },
     {
       label: (
-        <Link href="/">
+        <Link href="/student-dashboard">
           <div className="cursor-pointer resources">
             <Image
               src="/images/student2.svg"
@@ -47,7 +47,7 @@ export const StudentResourcesBtn = () => {
     },
     {
       label: (
-        <Link href="/">
+        <Link href="/read-book">
           <div className="cursor-pointer resources">
             <Image
               src="/images/student3.svg"
