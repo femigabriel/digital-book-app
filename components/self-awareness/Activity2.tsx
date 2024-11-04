@@ -78,7 +78,7 @@ export const Activity2 = ({
             <div className="mt-7">
               <button className="bg-[#FAD8E3] w-full" onClick={onNextClick}>
                 <Image
-                  src="/images/Button next.svg"
+                  src="/images/Action Btn.svg"
                   alt="Contact Illustration"
                   width={64}
                   height={64}
