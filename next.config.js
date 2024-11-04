@@ -9,8 +9,7 @@ module.exports = {
       {
         protocol: "https",
         hostname: "example.com",
-        // You can also specify a pathname pattern if needed:
-        // pathname: "/images/**",
+       
       },
     ],
   },

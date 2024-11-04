@@ -25,7 +25,7 @@ export const Activity2 = ({ onNextClick, onBackClick }: Props) => {
     if (secondAns.toLowerCase() === "being a good listener") {
       setErrorSecond(false);
       setIsCorrectSecond(true);
-      onNextClick(); // Only proceed to next step if answer is correct
+      onNextClick(); 
     } else {
       setErrorSecond(true);
       setIsCorrectSecond(false);
