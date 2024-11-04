@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Introducton } from './Introducton';
 import { Activity1 } from './Activity1';
 import { Activity2 } from './Activity2';
+import { FinalScore } from './FinalScore';
 
 export const SelfAwarenessPage = () => {
   const [step, setStep] = useState(0);
@@ -36,7 +37,7 @@ export const SelfAwarenessPage = () => {
         );
 
       default:
-        return null;
+        return <FinalScore />;
     }
   };
 
