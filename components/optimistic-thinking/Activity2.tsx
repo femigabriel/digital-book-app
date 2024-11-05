@@ -7,19 +7,19 @@ interface Props {
 }
 
 const questions = [
-  { text: "You are determined." },
-  { text: "Great work!" },
-  { text: "I don’t need your help." },
-  { text: "Could you please stop?" },
-  { text: "Love your ideas." },
-  { text: "Listen to me!" },
-  { text: "I don’t want to talk." },
-  { text: "What’s going on?" },
-  { text: "I don’t have time for this." },
-  { text: "I am smarter than you." },
+  { text: " We can work on the project together." },
+  { text: "Why should I listen to you?" },
+  { text: "Did I ask for help?" },
+  { text: "I work better alone." },
+  { text: "The teacher calls on me because I'm smart." },
+  { text: "I can help you." },
+  { text: "I am proud to be your friend." },
+  { text: "Are you really going to wear that?" },
+  { text: "Why should anyone hang out with her?" },
+  { text: "I can't wait to get home. You're so boring." },
 ];
 
-export const Activity1 = ({ onNextClick, onBackClick }: Props) => {
+export const Activity2 = ({ onNextClick, onBackClick }: Props) => {
   const [selectedColors, setSelectedColors] = useState<(string | null)[]>(
     Array(questions.length).fill(null)
   );
@@ -79,10 +79,9 @@ export const Activity1 = ({ onNextClick, onBackClick }: Props) => {
                 <div key={index} className="flex flex-col">
                   <div className="flex justify-between items-center py-2">
                     <div className="text-sm text-[#303030] font-medium">
-                      {index + 1}. {question.text}
+                      {index + 10}. {question.text}
                     </div>
                     <div className="flex gap-4">
-                      {/* Clickable Circles with Faded Effect */}
                       <div
                         className={`w-8 h-8 rounded-full cursor-pointer ${
                           selectedColors[index] === "green" ? "bg-[#17C964]/20" : "bg-[#17C964]"
