@@ -3,6 +3,7 @@ import { Form, Input, Button, notification } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Header } from "../Layout/Header";
 
 export const LoginPage = () => {
   const router = useRouter();
@@ -48,7 +49,25 @@ export const LoginPage = () => {
   
 
   return (
-    <div className="login">
+    <div className="div">
+       <div className=" w-full bg-[#FFFEE9]">
+      <header className="flex justify-between h-[90px] shadow">
+        <div className="div">
+          <Link href="/">
+            <Image
+              src="/images/Logo.svg"
+              alt="Logo"
+              width={50}
+              height={50}
+              className="w-full max-w-[191px]"
+            />
+          </Link>
+        </div>
+        <div></div>
+      </header>
+    </div>
+      <div className="login">
+        
       <div className="flex justify-center items-center h-full">
         <div className="bg-[#FAD8E3] px-5 py-7 w-[450px] rounded-lg shadow-md">
           <h3 className="text-[#303030] text-2xl text-center">
@@ -96,6 +115,7 @@ export const LoginPage = () => {
           </Form>
         </div>
       </div>
+    </div>
     </div>
   );
 };
