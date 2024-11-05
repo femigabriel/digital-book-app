@@ -74,8 +74,8 @@ export const StudentDashboardHeader = () => {
   ];
 
   return (
-    <div className="w-full bg-[#FFFEE9] px-10 py-5 header">
-      <header className="flex justify-between h-[90px] shadow">
+    <div className="w-full bg-[#FFFEE9] py-5 header">
+      <header className="flex  w-full justify-between max-h-[90px]  shadow px-10">
         <div>
           <Link href="/">
             <Image
