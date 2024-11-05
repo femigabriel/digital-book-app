@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json(
-      { message: "Login successful", success: true, userId: user._id }, // Include user ID if needed
+      { message: "Welcome to Student Zone!!! ", success: true, userId: user._id }, // Include user ID if needed
       { status: 200 }
     );
   } catch (error) {
