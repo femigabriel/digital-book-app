@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { Introducton } from './Introducton';
+import React, { useState } from "react";
+import { Introducton } from "./Introducton";
+import { Activity1 } from "./Activity1";
 
 export const OptimisticThinkingPage = () => {
   const [step, setStep] = useState(0);
@@ -14,14 +15,15 @@ export const OptimisticThinkingPage = () => {
   const renderStep = () => {
     switch (step) {
       case 0:
-        return <Introducton onNextClick={handleNext} onBackClick={handleBack} />;
-      // case 1:
-      //   return <SkillsList onNextClick={handleNext} onBackClick={handleBack} />;
-      // case 2:
-      //   return <Activity1 onNextClick={handleNext} onBackClick={handleBack} />;
+        return (
+          <Introducton onNextClick={handleNext} onBackClick={handleBack} />
+        );
+
+      case 1:
+        return <Activity1 onNextClick={handleNext} onBackClick={handleBack} />;
       // case 3:
       //   return <Activity2 onNextClick={handleNext} onBackClick={handleBack} />;
-     
+
       // default:
       //   return <FinalScore score={score} />;
     }
@@ -33,4 +35,3 @@ export const OptimisticThinkingPage = () => {
     </div>
   );
 };
-
