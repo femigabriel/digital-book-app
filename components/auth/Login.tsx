@@ -3,7 +3,6 @@ import { Form, Input, Button, notification } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Header } from "../Layout/Header";
 
 export const LoginPage = () => {
   const router = useRouter();

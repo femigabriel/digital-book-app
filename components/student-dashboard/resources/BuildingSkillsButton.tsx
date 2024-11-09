@@ -64,7 +64,7 @@ export const BuildingSkillsButton = () => {
     },
     {
       label: (
-        <Link href="/">
+        <Link href="/student-dashboard/optimistic-thinking">
           <div className="cursor-pointer resources">
             <Image
               src="/images/Drop4.svg"
