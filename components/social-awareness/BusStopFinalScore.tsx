@@ -58,6 +58,11 @@ export const BusStopFinalScore = () => {
     console.log("Score saved:", correctAnswers);
   };
 
+  // Reload the page to retake the activity
+  const handleRetakeActivity = () => {
+    window.location.reload();
+  };
+
   return (
     <div className="bg-[#FAD8E3] w-full !h-screen">
       <div className="flex justify-between items-center px-10 py-5 h-[90px] bg-[#FAD8E3] shadow">
@@ -110,6 +115,12 @@ export const BusStopFinalScore = () => {
                 Save Score 📝
               </button>
             </div>
+            <button
+              className="text-[#9B59B6] text-sm mt-5 underline"
+              onClick={handleRetakeActivity}
+            >
+              Retake Activity
+            </button>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { Modal } from "antd";
 import { useRouter } from "next/navigation";
 import { SoundOutlined, MutedOutlined } from "@ant-design/icons";
 import { ResultContext } from "@/context/ResultContext";
+import Link from "next/link";
 
 export const FinalScore = () => {
   const [showConfetti, setShowConfetti] = useState(false);
@@ -62,6 +63,10 @@ export const FinalScore = () => {
   const handleSaveScore = () => {
     console.log("Score saved:", correctAnswers);
   };
+  // Reload the page to retake the activity
+  const handleRetakeActivity = () => {
+    window.location.reload();
+  };
 
   return (
     <div className="bg-[#FAD8E3] w-full !h-screen">
@@ -119,6 +124,14 @@ export const FinalScore = () => {
                     onClick={handleSaveScore}
                   >
                     Save Score 📝
+                  </button>
+                </div>
+                <div className="div">
+                  <button
+                    className="text-[#9B59B6] text-sm mt-5 underline"
+                    onClick={handleRetakeActivity}
+                  >
+                    Retake Activity
                   </button>
                 </div>
               </div>
