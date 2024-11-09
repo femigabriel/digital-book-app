@@ -15,27 +15,27 @@ const questions = [
     id: 16,
     Descriptions: "Recognizing and valuing the good things.",
     busNumber: 16,
-    content: "I was here first",
+    content: "Greedy",
     correctAns: "true",
   },
   {
     id: 17,
     busNumber: 17,
-    content: "I’m not sharing",
+    content: "Bad-tempered",
     Descriptions: "Frequently angry or in a bad mood.",
     correctAns: "false",
   },
   {
     id: 18,
     busNumber: 18,
-    content: "Can i help you?",
+    content: "Snappy",
     Descriptions: "Responding in a quick, sharp, or rude way.",
     correctAns: "false",
   },
   {
     id: 19,
     busNumber: 19,
-    content: "I don’t want to sit next to you",
+    content: "Responsive",
     Descriptions: "Reacting quickly and positively to someone.",
     correctAns: "true",
   },
@@ -43,7 +43,7 @@ const questions = [
   {
     id: 20,
     busNumber: 20,
-    title: ". Warmth",
+    content: "Warmth",
     Descriptions: "Showing kindness and affection.",
     correctAns: "true",
   },
@@ -60,7 +60,6 @@ export const BusStop4 = ({ onNextClick, onBackClick }: Props) => {
       payload: [...(state?.busStopResults ?? []), { isCorrect: r, id: id }],
     });
   };
-
 
   return (
     <div className="w-full">

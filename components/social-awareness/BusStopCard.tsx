@@ -43,20 +43,19 @@ export const BusStopCard = ({ list, setResult }: any) => {
         <div className="mb-4">
           <div className="mb-3">
             <h3 className="text-[#652D90] font-semibold text-base">
-              {list?.content}
+            <span>{list.busNumber}.</span>{""} {list?.content}
             </h3>
             <h5 className="text-sm text-[#3F3F46]">Definition:</h5>
           </div>
           <p className="text-base">
-            <span>{list.busNumber}.</span> {list?.Descriptions}
+         {list?.Descriptions}
           </p>
           <div className="flex gap-3">
             <span className="text-sm text-[#303030] font-semibold">
               Should we get off?
             </span>
             <Radio.Group
-              // onChange={(e) => handleRadioChange(index, e.target.value)}
-              // value={list[index]}
+        
               onChange={(e) => handleClick("true")}
             >
               <Radio value="Yes">Yes</Radio>
