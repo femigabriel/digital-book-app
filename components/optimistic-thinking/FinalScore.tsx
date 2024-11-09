@@ -1,31 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import { Modal } from "antd";
-import { useRouter } from "next/navigation"; 
-import { SoundOutlined, MutedOutlined  } from "@ant-design/icons"; // Import icons
+import { useRouter } from "next/navigation";
+import { SoundOutlined, MutedOutlined } from "@ant-design/icons";
+import { ResultContext } from "@/context/ResultContext";
 
-interface FinalScoreProps {
-  score: number;
-}
-
-export const FinalScore = ({ score }: FinalScoreProps) => {
+export const FinalScore = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const celebrationSound = "/sounds/756229__timbre__yeah-man-rock-roll.flac";
-  const router = useRouter(); 
+  const router = useRouter();
+  const resultContext = useContext(ResultContext);
+  const { state } = resultContext;
+
   const audio = new Audio(celebrationSound);
 
-  useEffect(() => {
-    audio.volume = isMuted ? 0 : 1;
-    audio.play();
-    setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 5000);
+  const correctAnswers =
+    state?.results.filter((result) => result.isCorrect).length || 0;
+  const totalQuestions = 20;
+  const missedAnswers = totalQuestions - correctAnswers;
 
+  useEffect(() => {
+    if (correctAnswers === 20 && !isMuted) {
+      audio.play();
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 5000);
+    }
     return () => {
       audio.pause();
       audio.currentTime = 0;
     };
-  }, [isMuted]);
+  }, [correctAnswers, isMuted]);
 
   const handleMuteToggle = () => {
     setIsMuted(!isMuted);
@@ -33,14 +38,25 @@ export const FinalScore = ({ score }: FinalScoreProps) => {
 
   const handleQuit = () => {
     Modal.confirm({
-      title: 'Are you sure you want to quit?',
-      content: 'You will lose your progress if you leave this page.',
-      okText: 'Yes, I’m sure!',
-      cancelText: 'No, I want to stay!',
+      title: "Are you sure you want to quit?",
+      content: "You will lose your progress if you leave this page.",
+      okText: "Yes, I’m sure!",
+      cancelText: "No, I want to stay!",
       onOk: () => {
-        router.push("/student-dashboard"); 
+        router.push("/student-dashboard");
       },
     });
+  };
+
+  // Determine message based on score
+  const getMessage = () => {
+    if (correctAnswers === 20) {
+      return "🎉 Great Job, Kiddie! You aced it with a perfect score!";
+    } else if (correctAnswers >= 11 && correctAnswers < 20) {
+      return "Well done! You're close! Keep trying to reach a perfect score.";
+    } else {
+      return "Keep practicing! Try again to improve your score!";
+    }
   };
 
   return (
@@ -67,26 +83,41 @@ export const FinalScore = ({ score }: FinalScoreProps) => {
       <div className="flex justify-center items-center h-screen bg-[#FAD8E3]">
         {showConfetti && <ConfettiAnimation />}
         <div className="px-5 py-7 flex justify-center items-center w-full max-w-[700px] rounded-lg shadow-md bg-[#FFFEE9]">
-          <div className="w-full text-center">
-            <Image src="/icons/emoji-happy.svg" alt="Logo" width={50} height={50} />
-            <h2 className="text-4xl font-bold text-[#FF4500] mb-3">
-              {score === 3 ? "🎉 Fantastic!!! 🎉" : "Oops, you nearly got it!"}
-            </h2>
-            <p className="mb-5 text-sm text-[#303030]">
-              {score === 3 
-                ? "You really understand the relationship skills!" 
-                : "Keep practicing to improve your relationship skills!"}
+      <div className="flex justify-center items-center">
+      <div className="w-full ">
+            <div className="w-full flex justify-center items-center">
+              <Image
+                src="/icons/emoji-happy.svg"
+                alt="Logo"
+                width={50}
+                height={50}
+              />
+            </div>
+       <div className="text-center">
+       <p className="text-lg text-[#4CAF50] mt-4">
+              🎉 You got{" "}
+              <span className="font-bold">
+                {correctAnswers}/{totalQuestions}
+              </span>{" "}
+              correct!
             </p>
-            <h3 className="text-xl text-[#CA0077]">Score:</h3>
-            <p className="text-2xl text-[#303030] mb-1">{`You scored ${score}/3!`}</p>
+            <div className="mb-5 ">
+              <p className="text-lg text-[#FF5733] mt-2">
+                😯 You missed <span className="font-bold">{missedAnswers}</span>{" "}
+                questions.
+              </p>
+              <p className="text-md mt-4 text-[#333]">{getMessage()}</p>
+            </div>
+       </div>
           </div>
+      </div>
         </div>
       </div>
     </div>
   );
 };
 
-// Confetti and Balloon Animation Component
+// Confetti Animation Component
 const ConfettiAnimation = () => {
   return (
     <div className="confetti-container">

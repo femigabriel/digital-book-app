@@ -1,7 +1,7 @@
 import { UserProvider } from "@/context/UserContext";
 import "./globals.css";
 import { Inter } from "next/font/google";
-
+import  ResultContext  from "@/context/ResultContext";
 
 export const metadata = {
   title: "Book Digitization App",
@@ -21,8 +21,7 @@ export default function RootLayout({
       </head>
       <body className="">
         <UserProvider>
-          {children}
-
+          <ResultContext>{children}</ResultContext>
         </UserProvider>
       </body>
     </html>

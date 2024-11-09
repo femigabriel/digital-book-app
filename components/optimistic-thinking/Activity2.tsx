@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
+import { SpotLightGame } from "./SpotLightGame";
+import { ResultContext } from "@/context/ResultContext";
 
 interface Props {
   onNextClick: () => any;
@@ -7,27 +9,67 @@ interface Props {
 }
 
 const questions = [
-  { text: " We can work on the project together." },
-  { text: "Why should I listen to you?" },
-  { text: "Did I ask for help?" },
-  { text: "I work better alone." },
-  { text: "The teacher calls on me because I'm smart." },
-  { text: "I can help you." },
-  { text: "I am proud to be your friend." },
-  { text: "Are you really going to wear that?" },
-  { text: "Why should anyone hang out with her?" },
-  { text: "I can't wait to get home. You're so boring." },
+  {
+    id: 1,
+    text: "11. We can work on the projext together",
+    correctAns: "green",
+  },
+  {
+    id: 2,
+    text: "12. Why should i listen to you!",
+    correctAns: "red",
+  },
+  {
+    id: 3,
+    text: "13. Did i ask for help?",
+    correctAns: "yellow",
+  },
+  {
+    id: 4,
+    text: "14. I work better alone.",
+    correctAns: "yellow",
+  },
+  {
+    id: 5,
+    text: "15. The teacher calls on me because I'm smart",
+    correctAns: "red",
+  },
+  {
+    id: 6,
+    text: "16. I can help you like",
+    correctAns: "red",
+  },
+  {
+    id: 7,
+    text: "17. I am proud to be your friend",
+    correctAns: "red",
+  },
+  {
+    id: 8,
+    text: "18. Are you really going to wear that?",
+    correctAns: "yellow",
+  },
+  {
+    id: 9,
+    text: "19. Why should anyone hang out with her?",
+    correctAns: "red",
+  },
+  {
+    id: 10,
+    text: "20. I can't wait to get home. You're so boring",
+    correctAns: "red",
+  },
 ];
 
 export const Activity2 = ({ onNextClick, onBackClick }: Props) => {
-  const [selectedColors, setSelectedColors] = useState<(string | null)[]>(
-    Array(questions.length).fill(null)
-  );
-
-  const handleCircleClick = (color: string, index: number) => {
-    const newSelectedColors = [...selectedColors];
-    newSelectedColors[index] = color;
-    setSelectedColors(newSelectedColors);
+  const resultContext = useContext(ResultContext);
+  const { state } = resultContext;
+  
+  const handleSetResult = (r: boolean, id: string) => {
+    resultContext.dispatch({
+      type: "setResults",
+      payload: [...(state?.results ?? []), { isCorrect: r, id: id }],
+    });
   };
 
   return (
@@ -75,39 +117,15 @@ export const Activity2 = ({ onNextClick, onBackClick }: Props) => {
           <div className="mt-7">
             <h3 className="text-base font-bold text-[#652D90] mb-3">Sentences to Evaluate:</h3>
             <div className="bg-white shadow-md rounded-lg p-4">
-              {questions.map((question, index) => (
-                <div key={index} className="flex flex-col">
-                  <div className="flex justify-between items-center py-2">
-                    <div className="text-sm text-[#303030] font-medium">
-                      {index + 10}. {question.text}
-                    </div>
-                    <div className="flex gap-4">
-                      <div
-                        className={`w-8 h-8 rounded-full cursor-pointer ${
-                          selectedColors[index] === "green" ? "bg-[#17C964]/20" : "bg-[#17C964]"
-                        }`}
-                        onClick={() => handleCircleClick("green", index)}
-                      ></div>
-                      <div
-                        className={`w-8 h-8 rounded-full cursor-pointer ${
-                          selectedColors[index] === "yellow" ? "bg-[#D8CE00]/20" : "bg-[#D8CE00]"
-                        }`}
-                        onClick={() => handleCircleClick("yellow", index)}
-                      ></div>
-                      <div
-                        className={`w-8 h-8 rounded-full cursor-pointer ${
-                          selectedColors[index] === "red" ? "bg-[#F31260]/20" : "bg-[#F31260]"
-                        }`}
-                        onClick={() => handleCircleClick("red", index)}
-                      ></div>
-                    </div>
-                  </div>
-                  {/* Divider */}
-                  {index < questions.length - 1 && (
-                    <hr className="border-t border-gray-300" />
-                  )}
-                </div>
-              ))}
+              {questions.map((list, index) => {
+                return (
+                  <SpotLightGame
+                    list={list}
+                    setResult={handleSetResult}
+                    key={index}
+                  />
+                );
+              })}
             </div>
           </div>
 

@@ -27,7 +27,7 @@ export const OptimisticThinkingPage = () => {
         return <Activity2 onNextClick={handleNext} onBackClick={handleBack} />;
 
       default:
-        return <FinalScore score={score} />;
+        return <FinalScore  />;
     }
   };
 
