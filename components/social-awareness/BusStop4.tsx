@@ -1,57 +1,66 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import { Radio } from "antd";
+import { BusStopCard } from "./BusStopCard";
+import { ResultContext } from "@/context/ResultContext";
 
 interface Props {
   onNextClick: () => any;
   onBackClick: () => any;
 }
 
+// Define the questions
+const questions = [
+  {
+    id: 16,
+    Descriptions: "Recognizing and valuing the good things.",
+    busNumber: 16,
+    content: "I was here first",
+    correctAns: "true",
+  },
+  {
+    id: 17,
+    busNumber: 17,
+    content: "I’m not sharing",
+    Descriptions: "Frequently angry or in a bad mood.",
+    correctAns: "false",
+  },
+  {
+    id: 18,
+    busNumber: 18,
+    content: "Can i help you?",
+    Descriptions: "Responding in a quick, sharp, or rude way.",
+    correctAns: "false",
+  },
+  {
+    id: 19,
+    busNumber: 19,
+    content: "I don’t want to sit next to you",
+    Descriptions: "Reacting quickly and positively to someone.",
+    correctAns: "true",
+  },
+
+  {
+    id: 20,
+    busNumber: 20,
+    title: ". Warmth",
+    Descriptions: "Showing kindness and affection.",
+    correctAns: "true",
+  },
+];
+
 export const BusStop4 = ({ onNextClick, onBackClick }: Props) => {
-  // Define the questions
-  const questions = [
-    {
-      id: 16,
-      title: "16. Greedy",
-      Descriptions: "Recognizing and valuing the good things.",
-    },
-    {
-      id: 17,
-      title: "17. Bad-tempered",
-      Descriptions: "Frequently angry or in a bad mood.",
-    },
-    {
-      id: 18,
-      title: "18. Snappy",
-      Descriptions: "Responding in a quick, sharp, or rude way.",
-    },
-    {
-      id: 19,
-      title: "19. Responsive",
-      Descriptions: "Reacting quickly and positively to someone.",
-    },
-    {
-      id: 20,
-      title: "20. Warmth",
-      Descriptions: "Showing kindness and affection.",
-    },
-  ];
-
   // State to hold answers
-  const [answers, setAnswers] = useState<string[]>(
-    Array(questions.length).fill("")
-  );
+  const resultContext = useContext(ResultContext);
+  const { state } = resultContext;
 
-  // Handle radio change
-  const handleRadioChange = (index: number, value: string) => {
-    const newAnswers = [...answers];
-    newAnswers[index] = value;
-    setAnswers(newAnswers);
+  const handleSetResult = (r: boolean, id: string) => {
+    resultContext.dispatch({
+      type: "setBusStopResults",
+      payload: [...(state?.busStopResults ?? []), { isCorrect: r, id: id }],
+    });
   };
 
-  const handleSubmit = () => {
-    console.log(answers);
-  };
 
   return (
     <div className="w-full">
@@ -94,29 +103,17 @@ export const BusStop4 = ({ onNextClick, onBackClick }: Props) => {
 
             {/* Questions and Radio Inputs */}
             <div className="mt-7">
-              {questions.map((question, index) => (
-                <div key={index} className="mb-4">
-                  <div className="mb-3">
-                    <h3 className="text-[#652D90] font-semibold text-base">
-                      {question.title}
-                    </h3>
-                    <h5 className="text-sm text-[#3F3F46]">Definition:</h5>
+              {questions.map((list, index) => {
+                return (
+                  <div key={index} className="mb-5">
+                    <BusStopCard
+                      list={list}
+                      setResult={handleSetResult}
+                      key={index}
+                    />
                   </div>
-                  <p className="text-base">{question?.Descriptions}</p>
-                  <div className="flex gap-3">
-                    <span className="text-sm text-[#303030] font-semibold">
-                      Should we get off?
-                    </span>
-                    <Radio.Group
-                      onChange={(e) => handleRadioChange(index, e.target.value)}
-                      value={answers[index]}
-                    >
-                      <Radio value="Yes">Yes</Radio>
-                      <Radio value="No">No</Radio>
-                    </Radio.Group>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div className="mt-7">

@@ -59,6 +59,10 @@ export const FinalScore = () => {
     }
   };
 
+  const handleSaveScore = () => {
+    console.log("Score saved:", correctAnswers);
+  };
+
   return (
     <div className="bg-[#FAD8E3] w-full !h-screen">
       <div className="flex justify-between items-center px-10 py-5 h-[90px] bg-[#FAD8E3] shadow">
@@ -83,34 +87,43 @@ export const FinalScore = () => {
       <div className="flex justify-center items-center h-screen bg-[#FAD8E3]">
         {showConfetti && <ConfettiAnimation />}
         <div className="px-5 py-7 flex justify-center items-center w-full max-w-[700px] rounded-lg shadow-md bg-[#FFFEE9]">
-      <div className="flex justify-center items-center">
-      <div className="w-full ">
-            <div className="w-full flex justify-center items-center">
-              <Image
-                src="/icons/emoji-happy.svg"
-                alt="Logo"
-                width={50}
-                height={50}
-              />
+          <div className="flex justify-center items-center">
+            <div className="w-full ">
+              <div className="w-full flex justify-center items-center">
+                <Image
+                  src="/icons/emoji-happy.svg"
+                  alt="Logo"
+                  width={50}
+                  height={50}
+                />
+              </div>
+              <div className="text-center">
+                <p className="text-lg text-[#4CAF50] mt-4">
+                  🎉 You got{" "}
+                  <span className="font-bold">
+                    {correctAnswers}/{totalQuestions}
+                  </span>{" "}
+                  correct!
+                </p>
+                <div className="mb-5 ">
+                  <p className="text-lg text-[#FF5733] mt-2">
+                    😯 You missed{" "}
+                    <span className="font-bold">{missedAnswers}</span>{" "}
+                    questions.
+                  </p>
+                  <p className="text-md mt-4 text-[#333]">{getMessage()}</p>
+                </div>
+                <div className="flex justify-center items-center mt-5">
+                  <button
+                    className="bg-[#8BC34A] text-white py-2 px-4 rounded-full text-lg font-bold hover:bg-[#7CB342] transition-all"
+                    onClick={handleSaveScore}
+                  >
+                    Save Score 📝
+                  </button>
+                </div>
+              </div>
             </div>
-       <div className="text-center">
-       <p className="text-lg text-[#4CAF50] mt-4">
-              🎉 You got{" "}
-              <span className="font-bold">
-                {correctAnswers}/{totalQuestions}
-              </span>{" "}
-              correct!
-            </p>
-            <div className="mb-5 ">
-              <p className="text-lg text-[#FF5733] mt-2">
-                😯 You missed <span className="font-bold">{missedAnswers}</span>{" "}
-                questions.
-              </p>
-              <p className="text-md mt-4 text-[#333]">{getMessage()}</p>
-            </div>
-       </div>
           </div>
-      </div>
         </div>
       </div>
     </div>

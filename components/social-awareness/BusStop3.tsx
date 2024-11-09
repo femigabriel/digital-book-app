@@ -1,63 +1,68 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import { Radio } from "antd";
+import { BusStopCard } from "./BusStopCard";
+import { ResultContext } from "@/context/ResultContext";
 
 interface Props {
   onNextClick: () => any;
   onBackClick: () => any;
 }
 
+const questions = [
+  {
+    id: 11,
+    busNumber: 11,
+    content: "Why did you buy that shirt, it’s too small",
+    Descriptions: "Recognizing and valuing the good things.",
+    correctAns: "true",
+  },
+  {
+    id: 12,
+    busNumber: 12,
+    content: "Let’s work together",
+    Descriptions: "Giving a portion of what you have to others.",
+    correctAns: "true",
+  },
+  {
+    id: 13,
+    busNumber: 13,
+    content: "I appreciate you",
+    Descriptions: "Being kind and pleasant to others.",
+    correctAns: "true",
+  },
+  {
+    id: 14,
+    busNumber: 14,
+    content: "I’m in charge, not you!",
+    Descriptions: "Trying to force others to do something.",
+    correctAns: "false",
+  },
+  {
+    id: 15,
+    busNumber: 15,
+    content: "Move",
+    Descriptions: "Telling others what to do in a domineering way.",
+    correctAns: "true",
+  },
+];
+
 export const BusStop3 = ({ onNextClick, onBackClick }: Props) => {
-    // Define the questions
-  const questions = [
-    {
-      id: 11,
-      title: "11. Appreciation",
-      Descriptions: "Recognizing and valuing the good things.",
-    },
-    {
-      id: 12,
-      title: "12. Sharing",
-      Descriptions: "Giving a portion of what you have to others.",
-    },
-    {
-      id: 13,
-      title: "13. Friendly",
-      Descriptions: "Being kind and pleasant to others.",
-    },
-    {
-      id: 14,
-      title: "14. Pushy",
-      Descriptions: "Trying to force others to do something.",
-    },
-    {
-      id: 15,
-      title: "15. Bossy",
-      Descriptions: "Telling others what to do in a domineering way.",
-    },
-  ];
+  const resultContext = useContext(ResultContext);
+  const { state } = resultContext;
 
-  // State to hold answers
-  const [answers, setAnswers] = useState<string[]>(
-    Array(questions.length).fill("")
-  );
-
-  // Handle radio change
-  const handleRadioChange = (index: number, value: string) => {
-    const newAnswers = [...answers];
-    newAnswers[index] = value;
-    setAnswers(newAnswers);
-  };
-
-  const handleSubmit = () => {
-    console.log(answers);
+  const handleSetResult = (r: boolean, id: string) => {
+    resultContext.dispatch({
+      type: "setBusStopResults",
+      payload: [...(state?.busStopResults ?? []), { isCorrect: r, id: id }],
+    });
   };
 
   return (
     <div className="w-full">
       <div className="px-10 py-5 h-[90px] bg-[#ECE0F5] shadow flex justify-between items-center">
         <div className="div">
-          <button className="w-full"  onClick={onBackClick}>
+          <button className="w-full" onClick={onBackClick}>
             <Image
               src="/images/Back Button.svg"
               alt="Back Button"
@@ -94,35 +99,21 @@ export const BusStop3 = ({ onNextClick, onBackClick }: Props) => {
 
             {/* Questions and Radio Inputs */}
             <div className="mt-7">
-              {questions.map((question, index) => (
-                <div key={index} className="mb-4">
-                  <div className="mb-3">
-                    <h3 className="text-[#652D90] font-semibold text-base">
-                      {question.title}
-                    </h3>
-                    <h5 className="text-sm text-[#3F3F46]">Definition:</h5>
+              {questions.map((list, index) => {
+                return (
+                  <div key={index} className="mb-5">
+                    <BusStopCard
+                      list={list}
+                      setResult={handleSetResult}
+                      key={index}
+                    />
                   </div>
-                  <p className="text-base">{question?.Descriptions}</p>
-                  <div className="flex gap-3">
-                    <span className="text-sm text-[#303030] font-semibold">
-                      Should we get off?
-                    </span>
-                    <Radio.Group
-                      onChange={(e) => handleRadioChange(index, e.target.value)}
-                      value={answers[index]}
-                    >
-                      <Radio value="Yes">Yes</Radio>
-                      <Radio value="No">No</Radio>
-                    </Radio.Group>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div className="mt-7">
-              <button className="bg-[#FAD8E3] w-full"
-              onClick={onNextClick}
-              >
+              <button className="bg-[#FAD8E3] w-full" onClick={onNextClick}>
                 <Image
                   src="/images/Button next.svg"
                   alt="Contact Illustration"

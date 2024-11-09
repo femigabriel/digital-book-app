@@ -67,9 +67,10 @@ export const Introducton = ({ onNextClick, onBackClick }: Props) => {
                 Social Awareness!
               </p>
             </div>
-            <div className="flex flex-col mt-7 justify-center">
-              <p className="w-full text-sm mt-5 tracking-wide leading-[28.8px]">
-                Read the story carefully. Charlie and Mya take the bus downtown
+            <div className="flex flex-col mt-7 justify-center max-w-[34em]">
+              <h3 className="text-base font-bold text-[#652D90] mb-2">Read the story carefully:</h3>
+              <p className="w-full text-sm  tracking-wide leading-[28.8px]">
+                Charlie and Mya take the bus downtown
                 to see Mya’s dad. As they travel, they pass different bus stops
                 with important words related to social-emotional learning (SEL).
                 Your task is to decide whether to get off at each bus stop by
