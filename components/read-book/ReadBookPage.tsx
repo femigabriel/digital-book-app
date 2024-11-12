@@ -39,11 +39,11 @@ export default function ReadBookPage() {
         >
           {/* 1st page */}
           <div className="bg-[#FFFEE9] h-full w-full flex justify-center items-center">
-            <div className="h-full w-full bg-[#FFFEE9] px-5 lg:px-10 lg:py-5">
+            <div className="h-full w-full bg-[#FFFEE9]">
               <Image
                 width={680}
                 height={537}
-                src="/assets/illustrators/book-cover-1.svg"
+                src="/assets/illustrators/cover-new.svg"
                 className="w-full max-w-[680px] h-full max-h-[537px] cursor-pointer"
                 alt="avatar"
               />
@@ -68,7 +68,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG1 1.svg"
+                  src="/assets/illustrators/1.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -102,7 +102,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG2 1.svg"
+                  src="/assets/illustrators/3.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -133,7 +133,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG2 1.svg"
+                  src="/assets/illustrators/44.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -163,7 +163,7 @@ export default function ReadBookPage() {
             <Image
               width={300}
               height={300}
-              src="/assets/illustrators/PG4 2.svg"
+              src="/assets/illustrators/6.svg"
               className="w-full h-full cursor-pointer"
               alt="avatar"
             />
@@ -191,7 +191,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG4 2.svg"
+                  src="/assets/illustrators/7.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -224,7 +224,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG 6 1.svg"
+                  src="/assets/illustrators/8.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -251,7 +251,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG7 1.svg"
+                  src="/assets/illustrators/9.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -284,7 +284,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG8 1.svg"
+                  src="/assets/illustrators/10.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -314,7 +314,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG 9, 10 1.svg"
+                  src="/assets/illustrators/11.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -345,7 +345,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG 9, 10 1.svg"
+                  src="/assets/illustrators/12.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -377,7 +377,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG11 1.svg"
+                  src="/assets/illustrators/13.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -409,7 +409,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG11 1.svg"
+                  src="/assets/illustrators/14.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -438,7 +438,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG12 ,13 1.svg"
+                  src="/assets/illustrators/15.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -468,7 +468,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG12 ,13 1.svg"
+                  src="/assets/illustrators/16.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -499,7 +499,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG15 1.svg"
+                  src="/assets/illustrators/17.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -530,7 +530,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG12 ,13 1.svg"
+                  src="/assets/illustrators/18.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -560,7 +560,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG 14 1.svg"
+                  src="/assets/illustrators/19.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -588,7 +588,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG 14 1.svg"
+                  src="/assets/illustrators/220.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -619,7 +619,7 @@ export default function ReadBookPage() {
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG 17 1.svg"
+                  src="/assets/illustrators/21.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
@@ -709,7 +709,7 @@ Mya continues to cry but then gathers herself to speak."
                 <Image
                   width={300}
                   height={300}
-                  src="/assets/illustrators/PG 21 DOWN 2.svg"
+                  src="/assets/illustrators/24.svg"
                   className="w-full h-full cursor-pointer"
                   alt="page"
                 />
