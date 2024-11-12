@@ -795,7 +795,7 @@ Mya continues to cry but then gathers herself to speak."
               />
             </div>
           </div>
-          <div className="bg-[#FFFEE9]">
+          <div className="bg-[#F8F8F8]">
             <Image
               width={30}
               height={30}
