@@ -15,7 +15,7 @@ export default function ReadBookPage() {
         <HTMLFlipBook
           width={500}
           height={600}
-          className="bg-[#FFFEE9] shadow-lg rounded"
+          className="bg-[#FFFEE9] shadow-xl rounded"
           style={{ background: "#FFFEE9" }}
           startPage={0}
           flippingTime={1000}
@@ -38,13 +38,13 @@ export default function ReadBookPage() {
           disableFlipByClick={false}
         >
           {/* 1st page */}
-          <div className="bg-[#E1D1F6] h-full w-full flex justify-center items-center">
-            <div className="h-full w-full bg-[#E1D1F6] px-5 lg:px-10 lg:py-5">
+          <div className="bg-[#FFFEE9] h-full w-full flex justify-center items-center">
+            <div className="h-full w-full bg-[#FFFEE9] px-5 lg:px-10 lg:py-5">
               <Image
-                width={300}
-                height={300}
+                width={680}
+                height={537}
                 src="/assets/illustrators/book-cover-1.svg"
-                className="w-full h-full cursor-pointer"
+                className="w-full max-w-[680px] h-full max-h-[537px] cursor-pointer"
                 alt="avatar"
               />
             </div>
