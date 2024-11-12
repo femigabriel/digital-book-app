@@ -27,14 +27,6 @@ export const BusStopCard = ({ list, setResult }: any) => {
     
   };
 
-    // Handle radio change
-    // const handleClick = (index: number, value: string, e: any) => {
-    //   const newAnswers = [...answers];
-    //   newAnswers[index] = value;
-    //   setAnswers(newAnswers);
-    //   setActive(e);
-    //   setResult(list.correctAns == e, list.id);
-    // };
 
 
   return (

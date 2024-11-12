@@ -28,7 +28,7 @@ export const Introducton = ({ onNextClick, onBackClick }: Props) => {
 
   return (
     <div className="w-full !h-screen">
-      <div className="px-10 py-5 h-[90px] bg-[#ECE0F5] shadow flex justify-between items-center">
+      <div className="px-10 py-5 h-[90px] gradient-border shadow flex justify-between items-center">
         <div className="div">
           <button className="w-full" onClick={handleQuit}>
             <Image

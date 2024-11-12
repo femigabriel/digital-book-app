@@ -14,8 +14,8 @@ export const Activity2 = ({
   selectedWord,
 }: Props) => {
   return (
-    <div className="w-full bg-[#ECE0F5]">
-      <div className="px-10 py-5 h-[90px] bg-[#ECE0F5] shadow flex justify-between items-center">
+    <div className="w-full bg-[#FFFEE9]">
+      <div className="px-10 py-5 h-[90px] bg-[#FFFEE9] gradient-border shadow flex justify-between items-center">
         <div>
           <button className="w-full" onClick={onBackClick}>
             <Image
@@ -41,8 +41,8 @@ export const Activity2 = ({
           </button>
         </div>
       </div>
-      <div className="self-awareness w-full h-screen bg-[#ECE0F5]">
-        <div className="bg-[#ECE0F5] w-full max-w-[750px] rounded-[10px] shadow-xl">
+      <div className="self-awareness w-full h-screen bg-[#FFFEE9]">
+        <div className="bg-[#FFFEE9] w-full max-w-[750px] rounded-[10px] shadow-xl">
           <div className="px-5 py-5">
             <div className="flex flex-col justify-center items-center">
               <h3 className="text-[#CA0077] text-xl">Activity</h3>

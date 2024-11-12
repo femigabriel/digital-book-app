@@ -316,7 +316,7 @@ body::-webkit-scrollbar-thumb {
   background-image: url(../public/images/205.svg);
   background-position: right;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -338,4 +338,22 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.gradient-border {
+  border-image: linear-gradient(to bottom, #eee0ff66 40%, #ffffff80 50%) 1;
+}
+
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active {
+  background: #ff4ecd;
+  color: #ffffff !important;
+  border: none;
+}
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active {
+  color: #ffffff !important;
+}
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
+  border: none;
+}
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #ffffff;
 }
