@@ -35,17 +35,18 @@ export const HeroPage = () => {
               draggable="false"
             />
           </div>
-          <div className="cursor-pointer my-3">
-            <Image
-              src="/images/Resources Button.svg"
-              alt="Logo"
-              width={50}
-              height={50}
-              className="w-full max-w-[191px]"
-              draggable="false"
-            />
-          </div>
-         
+          <Link href="/teacher-zone">
+            <div className="cursor-pointer my-3">
+              <Image
+                src="/images/Resources Button.svg"
+                alt="Logo"
+                width={50}
+                height={50}
+                className="w-full max-w-[191px]"
+                draggable="false"
+              />
+            </div>
+          </Link>
           <ScoreSheetButton />
         </div>
 
@@ -66,7 +67,7 @@ export const HeroPage = () => {
           {/* last Character Image */}
           <div className="">
             <Image
-              src="/images/Left Image Container.svg" 
+              src="/images/Left Image Container.svg"
               alt="Character 2"
               width={250}
               height={250}
@@ -90,17 +91,19 @@ export const HeroPage = () => {
               />
             </div>
           </Link>
-          <div className="cursor-pointer my-3">
-            <Image
-              src="/images/student-zone.svg"
-              alt="Logo"
-              width={50}
-              height={50}
-              className="w-full max-w-[191px]"
-              draggable="false"
-            />
-          </div>
-       
+          <Link href="/login">
+            <div className="cursor-pointer my-3">
+              <Image
+                src="/images/student-zone.svg"
+                alt="Logo"
+                width={50}
+                height={50}
+                className="w-full max-w-[191px]"
+                draggable="false"
+              />
+            </div>
+          </Link>
+
           <StudentResourcesBtn />
         </div>
       </div>
