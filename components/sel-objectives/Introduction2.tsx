@@ -1,15 +1,15 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation"; // Import useRouter
-import { Divider, Modal } from "antd"; // Import Modal
+import { Modal } from "antd"; // Import Modal
 
 interface Props {
   onNextClick: () => any;
   onBackClick: () => any;
 }
 
-export const Introducton = ({ onNextClick, onBackClick }: Props) => {
-  const router = useRouter();
+export const Introduction2 = ({ onNextClick, onBackClick }: Props) => {
+  const router = useRouter(); // Initialize useRouter
 
   const handleQuit = () => {
     Modal.confirm({
@@ -27,14 +27,14 @@ export const Introducton = ({ onNextClick, onBackClick }: Props) => {
   };
 
   return (
-    <div className="w-full ">
-      <div className="px-10 py-5 h-[90px] gradient-border shadow flex justify-between items-center">
+    <div className="w-full">
+      <div className="px-10 py-5 h-[90px] activity-header shadow flex justify-between items-center">
         <div className="div">
-          <button className="w-full" onClick={handleQuit}>
+          <button className=" w-full" onClick={onBackClick}>
             <Image
-              src="/assets/icons/quitIcon.svg"
-              alt="Quit"
-              width={80}
+              src="/images/Back Button.svg"
+              alt="Back Button"
+              width={115}
               height={45}
               className="max-w-full h-auto"
               draggable="false"
@@ -42,10 +42,10 @@ export const Introducton = ({ onNextClick, onBackClick }: Props) => {
           </button>
         </div>
         <div className="div">
-          <button className="w-full">
+          <button className=" w-full">
             <Image
               src="/images/Frame 110.svg"
-              alt="More info"
+              alt="more info"
               width={251}
               height={45}
               className="max-w-full h-auto"
@@ -55,7 +55,7 @@ export const Introducton = ({ onNextClick, onBackClick }: Props) => {
         </div>
       </div>
 
-      <div className="sel-obj !h-full w-full">
+      <div className="sel-obj h-full w-full">
         <div className="bg-[#FFFEE9] w-full max-w-[750px] flex justify-center rounded-[10px] shadow-xl items-center">
           <div className="px-5 py-5">
             <div className="flex flex-col justify-center items-center">
@@ -74,58 +74,32 @@ export const Introducton = ({ onNextClick, onBackClick }: Props) => {
 
             <div className="mt-7">
               <h3 className="text-base font-bold text-[#652D90]">
-                Areas of Concentration:
+                Social Emotional Learning:
               </h3>
-              <div className="mt-7">
-                <h4 className="text-[#3F3F46] text-sm font-bold">
-                  Third Grade
-                </h4>
-                <p className=" w-full text-sm mt-2 tracking-wide leading-[28.8px]">
-                  Empathy and Understanding
-                  <br />
-                  What does that even mean? (Communication)
-                  <br />
-                  Encourage acts of kindness
-                </p>
-                <Divider className="mt-5" />
-              </div>
-
-              <div className="mt-3">
-                <h4 className="text-[#3F3F46] text-sm font-bold">
-                  Fourth Grade
-                </h4>
-                <p className=" w-full text-sm mt-2 tracking-wide leading-[28.8px]">
-                  Respecting boundaries
-                  <br />
-                  Cooperation
-                  <br />
-                  Name that feeling
-                </p>
-                <Divider className="mt-5" />
-              </div>
-
-              <div className="mt-3">
-                <h4 className="text-[#3F3F46] text-sm font-bold">
-                  Fifth Grade
-                </h4>
-                <p className=" w-full text-sm mt-2 tracking-wide leading-[28.8px]">
-                  Recognizing Triggers
-                  <br />
-                  Positive Self-image
-                  <br />
-                  Words that build or break
-                </p>
-                <Divider className="mt-5" />
-              </div>
+              <p className="w-full text-sm mt-2 tracking-wide leading-[28.8px]">
+                The following activities will support students with the
+                integration of social emotional skills into knowledge and ideas.
+              </p>
+              <p className="w-full text-sm mt-2 tracking-wide leading-[28.8px]">
+                · Thinking it through-Read a paragraph and then answer the
+                questions that follow. <br />
+                · Write the response on the lines provided. <br />
+                · Use the information provided to choose the best answer. <br />
+                · Paraphrase and express information in one’s own words.
+                <br />
+                · Determine the meaning of words and phrases that reinforce each
+                Social Emotional Skill.
+                <br />
+              </p>
             </div>
             <div className="mt-7 flex justify-center w-full items-center">
               <button className="bg-[#FAD8E3] w-full" onClick={onNextClick}>
                 <Image
-                  src="/images/Button Wrapper.svg"
+                  src="/images/Button next.svg"
                   alt="Contact Illustration"
-                  width={516}
-                  height={59}
-                  className="w-full h-auto"
+                  width={64}
+                  height={64}
+                  className="max-w-full w-full h-auto"
                 />
               </button>
             </div>

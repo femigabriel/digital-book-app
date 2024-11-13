@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Introducton } from "./Introducton";
 import { useUser } from "@/context/UserContext";
+import { Introduction2 } from "./Introduction2";
 
 export const SelObjectivesPage = () => {
   const [step, setStep] = useState(0);
@@ -26,8 +27,8 @@ export const SelObjectivesPage = () => {
           <Introducton onNextClick={handleNext} onBackClick={handleBack} />
         );
 
-    //   case 1:
-    //     return <Activity1 onNextClick={handleNext} onBackClick={handleBack} />;
+      case 1:
+        return <Introduction2 onNextClick={handleNext} onBackClick={handleBack} />;
 
     //   default:
     //     return (
