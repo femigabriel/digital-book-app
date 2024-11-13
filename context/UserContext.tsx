@@ -1,13 +1,19 @@
-// context/UserContext.tsx
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+interface Score {
+  activityName: string;
+  score: number;
+  _id: string;
+}
+
 interface User {
   name: string;
   avatar: string;
-  _id: string
+  _id: string;
+  scores: Score[];
 }
 
 const UserContext = createContext<User | null>(null);
@@ -24,13 +30,14 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (!userId) return;
 
       try {
+        // Fetch both user data and scores
         const res = await fetch(`/api/user`, {
           headers: { "user-id": userId },
         });
         
         if (res.ok) {
           const data = await res.json();
-          setUser(data.user); // Populate user data
+          setUser(data.user); // Populate user data, including scores
         } else {
           // Redirect to home if fetching fails
           router.push("/");

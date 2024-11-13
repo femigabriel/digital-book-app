@@ -11,7 +11,7 @@ export default function ScoreChart() {
       {
         data: [5000, 2500, 1500, 800, 200],
         backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
-        cutout: '70%', // Makes the doughnut chart more compact
+        cutout: '70%', 
       },
     ],
   };

@@ -1,70 +1,61 @@
-// components/ScoreHighlight.tsx
-import React, { useState } from "react";
+import { useUser } from "@/context/UserContext";
+import React from "react";
 
-const categories = [
-  {
-    title: "RELATIONSHIP SKILL ROCK CHARLIES CHOICES",
-    points: 1500,
-    maxPoints: 3000,
-    color: "bg-purple-500", // Left bar color
-  },
-  {
-    title: "BUS STOP BOP",
-    points: 800,
-    maxPoints: 3000,
-    color: "bg-pink-500",
-  },
-  {
-    title: "TIME MANAGEMENT MASTER",
-    points: 1200,
-    maxPoints: 3000,
-    color: "bg-blue-500",
-  },
-  {
-    title: "CREATIVE THINKER",
-    points: 1700,
-    maxPoints: 3000,
-    color: "bg-green-500",
-  },
-  {
-    title: "EMOTIONAL INTELLIGENCE",
-    points: 1000,
-    maxPoints: 3000,
-    color: "bg-red-500",
-  },
-  {
-    title: "PROBLEM SOLVING",
-    points: 2000,
-    maxPoints: 3000,
-    color: "bg-yellow-500",
-  },
+// Define the color and title mappings for activities
+const activityColors = [
+  { color: "bg-purple-500" },
+  { color: "bg-pink-500" },
+  { color: "bg-blue-500" },
+  { color: "bg-green-500" },
+  { color: "bg-red-500" },
+  { color: "bg-yellow-500" },
+  { color: "bg-indigo-500" },  // Example new activity
+  { color: "bg-teal-500" },    // Example new activity
+  { color: "bg-orange-500" },  // Example new activity
+  { color: "bg-gray-500" }     // Example new activity
 ];
 
 export default function ScoreHighlight() {
+  const user = useUser();
+
+  if (!user || !user.scores || user.scores.length === 0) {
+    return <div>No scores available.</div>;
+  }
+
   return (
     <div className="w-full">
       <h2 className="text-2xl font-bold text-center mt-4">Score Highlight</h2>
 
-   <div className="flex justify-center items-center">
-   <div className="grid grid-cols-2 gap-4 p-4">
-        {categories.map((category, index) => (
-          <div
-            key={index}
-            className=" rounded-lg bg-[#F8F8F8] pr-4 shadow-lg flex items-center"
-          >
-            <div className={`w-4 h-full ${category.color}  rounded-l-lg`} />
-            <div className="flex-grow  p-4">
-              <h3 className="font-semibold text-base">{category.title}</h3>
-              <p>{category.maxPoints} pts maximum</p>
-            </div>
-            <span 
-            className='text-sm '
-            style={{ color: `${category.color}` }}
-            >{category.points} pts</span>
-          </div>
-        ))}
+      <div className="flex justify-center items-center">
+        {/* Grid for 2 items per row, with adjusted card size */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 p-4">
+          {user.scores.map((scoreEntry, index) => {
+            const activity = activityColors[index]; // Get the color for the activity
+            if (!activity) return null; // In case there are more scores than activities
+
+            return (
+              <div
+                key={index}
+                className="rounded-lg bg-[#F8F8F8] shadow-lg flex items-center p-6"
+              >
+                {/* Left bar with specific color based on activity */}
+                <div className={`w-6 h-full ${activity.color} rounded-l-lg`} />
+                
+                <div className="flex-grow p-4">
+                  {/* Display the activity name from the db */}
+                  <h3 className="font-semibold text-lg">{scoreEntry.activityName}</h3>
+                  {/* Display max points */}
+                  <p>3000 pts maximum</p>
+                </div>
+                
+                <span className="text-sm font-semibold" style={{ color: activity.color }}>
+                  {scoreEntry.score} pts
+                </span>
+              </div>
+            );
+          })}
+        </div>
       </div>
-   </div>
     </div>
   );
 }
