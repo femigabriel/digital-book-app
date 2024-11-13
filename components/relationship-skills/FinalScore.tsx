@@ -15,6 +15,7 @@ export const FinalScore = ({
   userId,
   activityName,
 }: FinalScoreProps) => {
+  
   const [showConfetti, setShowConfetti] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   
