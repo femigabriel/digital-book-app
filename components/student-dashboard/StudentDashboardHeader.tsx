@@ -31,7 +31,7 @@ export const StudentDashboardHeader = () => {
     {
       key: "2",
       label: (
-        <Link href="/activitis">
+        <Link href="/activities">
           <span className="text-sm font-bold text-[#652D90]">Activities</span>
         </Link>
       ),
