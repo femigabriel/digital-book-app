@@ -381,3 +381,21 @@ body::-webkit-scrollbar-thumb {
   background: url("../public/images/Group\ 1000007885.svg") no-repeat center;
   background-size: contain;
 }
+
+.activities-card {
+  width: 100%;
+
+  transition: all 0.2s ease-in-out;
+
+}
+.activities-card:hover {
+  transform: scale(1.1);
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1.1);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1.1);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1.1);
+  transition: all 200ms ease-in;
+ 
+}
