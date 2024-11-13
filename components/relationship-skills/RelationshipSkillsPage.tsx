@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Introducton } from "./Introducton";
 import { SkillsList } from "./SkillsList";
 import { Activity1 } from "./Activity1";
 import { Activity2 } from "./Activity2";
 import { Activity3 } from "./Activity3";
 import { FinalScore } from "./FinalScore";
+import { useUser } from "@/context/UserContext";
 
 export const RelationshipSkillsPage = () => {
   const [step, setStep] = useState(0);
-  const [score, setScore] = useState<number>(0); // Default score to 0
+  const [score, setScore] = useState<number>(0);
+  const user = useUser();
+  const [isUserLoaded, setIsUserLoaded] = useState(false);
+
+  // Check if user data is loaded
+  useEffect(() => {
+    if (user) {
+      setIsUserLoaded(true);
+    }
+  }, [user]);
 
   const handleNext = () => setStep((prevStep) => prevStep + 1);
   const handleBack = () => setStep((prevStep) => Math.max(prevStep - 1, 0));
@@ -37,7 +47,18 @@ export const RelationshipSkillsPage = () => {
           />
         );
       default:
-        return <FinalScore score={score} />;
+        // Ensure user is loaded before rendering FinalScore
+        if (isUserLoaded) {
+          return (
+            <FinalScore
+              score={score}
+              userId={user?._id || "Unknown User"}  // Pass the correct user ID here
+              activityName="Relationship Skills"
+            />
+          );
+        } else {
+          return <div>Loading...</div>;
+        }
     }
   };
 

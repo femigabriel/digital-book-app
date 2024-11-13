@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 interface User {
   name: string;
   avatar: string;
+  _id: string
 }
 
 const UserContext = createContext<User | null>(null);

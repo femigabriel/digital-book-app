@@ -6,7 +6,6 @@ if (!MONGODB_URI) {
   throw new Error("Please define the MONGODB_URI environment variable.");
 }
 
-// Create a cache object to store the connection and promise
 const cached: { conn: Connection | null; promise: Promise<Connection> | null } = {
   conn: null,
   promise: null,
@@ -19,7 +18,8 @@ async function dbConnect() {
 
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => {
-      return mongoose.connection; // Return the connection object
+      console.log("Connected to MongoDB");
+      return mongoose.connection;
     });
   }
   

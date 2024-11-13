@@ -340,8 +340,12 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
 }
 .gradient-border {
-  border-image: linear-gradient(to bottom, #eee0ff66 40%, #ffffff80 50%) 1;
+  background-color: linear-gradient(to bottom, #eee0ff66 40%, #ffffff80 50%) 1;
 }
+.gradient-border {
+  background: linear-gradient(to bottom, #eee0ff66 40%, #ffffff80 50%);
+}
+
 
 .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active {
   background: #ff4ecd;
@@ -356,4 +360,7 @@ body::-webkit-scrollbar-thumb {
 }
 .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
   color: #ffffff;
+}
+.score-header {
+  background: linear-gradient(to bottom, #82B77C 100%, #FF8C69 100%);
 }

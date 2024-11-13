@@ -2,22 +2,13 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useUser } from "@/context/UserContext";
-import {
-  DownOutlined,
-  SmileOutlined,
-  BookOutlined,
-  StarOutlined,
-  TrophyOutlined,
-  DollarOutlined,
-  UserAddOutlined,
-  LogoutOutlined,
-} from "@ant-design/icons";
+import { DownOutlined, SmileOutlined, BookOutlined, StarOutlined, TrophyOutlined, DollarOutlined, UserAddOutlined, LogoutOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Dropdown, Space } from "antd";
 
-export const StudentDashboardHeader = () => {
+export const SscoreBoardHeader = () => {
   const user = useUser();
-  console.log({ user });
+
   const items: MenuProps["items"] = [
     {
       key: "1",
@@ -41,9 +32,7 @@ export const StudentDashboardHeader = () => {
       key: "3",
       label: (
         <Link href="/purchase-books">
-          <span className="text-sm font-bold text-[#652D90]">
-            Purchase Books
-          </span>
+          <span className="text-sm font-bold text-[#652D90]">Purchase Books</span>
         </Link>
       ),
       icon: <DollarOutlined />,
@@ -66,14 +55,12 @@ export const StudentDashboardHeader = () => {
       ),
       icon: <TrophyOutlined />,
     },
-
+    
     {
       key: "6",
       label: (
         <Link href="/change-avatar">
-          <span className="text-sm font-bold text-[#652D90]">
-            Change Avatar
-          </span>
+          <span className="text-sm font-bold text-[#652D90]">Change Avatar</span>
         </Link>
       ),
       icon: <UserAddOutlined />,
@@ -87,7 +74,7 @@ export const StudentDashboardHeader = () => {
   ];
 
   return (
-    <div className="w-full bg-[#FFFEE9] py-5 header">
+    <div className="w-full py-5 score-header">
       <header className="flex  w-full justify-between max-h-[90px]  shadow px-10">
         <div>
           <Link href="/">
