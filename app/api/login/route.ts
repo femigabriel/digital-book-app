@@ -1,37 +1,32 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from '@/lib/dbConnect';
-import Score from '@/models/Score';
+import { NextResponse } from "next/server";
+import dbConnect from "@/lib/dbConnect";
+import User from "@/models/User";
 
-interface ScoreRequestBody {
-  userId: string;
-  activityName: string;
-  score: number;
-}
+export async function POST(request: Request) {
+  try {
+    await dbConnect();
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "POST") {
-    const { userId, activityName, score }: ScoreRequestBody = req.body;
-  
-    console.log("Received score data:", { userId, activityName, score });
-  
-    // Check if required data is present
-    if (!userId || !activityName || score === undefined) {
-      return res.status(400).json({ error: "Missing required fields" });
+    // Extract name from the request body
+    const { name } = await request.json();
+
+    if (!name) {
+      return NextResponse.json({ error: "Name is required" }, { status: 400 });
     }
-  
-    try {
-      await dbConnect(); // Ensure connection to the database
-  
-      // Save the score
-      const newScore = new Score({ userId, activityName, score });
-      await newScore.save();
-  
-      res.status(200).json({ message: "Score saved successfully" });
-    } catch (error) {
-      console.error("Error saving score:", error);
-      res.status(500).json({ error: "Failed to save score" });
+
+    // Find the user with the provided name
+    const user = await User.findOne({ name });
+
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
-  } else {
-    res.status(405).json({ error: "Method not allowed" });
+
+    // Return a success response with user ID and message
+    return NextResponse.json(
+      { success: true, message: "Welcome to the student dashboard", userId: user._id },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Login Error:", error);
+    return NextResponse.json({ error: "Failed to login" }, { status: 500 });
   }
 }
