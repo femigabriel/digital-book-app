@@ -28,13 +28,13 @@ export const SelfManagementCard: React.FC<SelfManagementCardProps> = ({
       onClick={() => onSelect(index + 1)}
     >
       <div
-        className="px-5 py-5 w-[47px] h-[114px] flex items-center justify-center border-4 rounded-md"
+        className="px-5 py-5 w-[47px] h-[114px] flex items-center justify-center border-2 rounded-md"
         style={{ backgroundColor: question.bg, borderColor: question.color }}
       >
         <span>{index + 1}.</span>
       </div>
       <div
-        className="flex-col w-full p-2 h-[114px] border-4 rounded-md"
+        className="flex-col w-full p-2 h-[114px] border-2 rounded-md"
         style={{ backgroundColor: question.bg, borderColor: question.color }}
       >
         <p className="text-base text-[#303030]">{question.question}</p>

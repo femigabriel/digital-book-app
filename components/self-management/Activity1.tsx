@@ -73,7 +73,7 @@ export const Activity1 = ({ onNextClick, onBackClick }: Props) => {
   return (
     <div className="w-full">
       <div className="px-10 py-5 h-[90px] gradient-border shadow flex justify-between">
-        <button className="w-full" onClick={onBackClick}>
+        <button className="" onClick={onBackClick}>
           <Image
             src="/images/Back Button.svg"
             alt="Back Button"
@@ -83,7 +83,7 @@ export const Activity1 = ({ onNextClick, onBackClick }: Props) => {
             draggable="false"
           />
         </button>
-        <button className="w-full">
+        <button className="">
           <Image
             src="/images/Frame 110.svg"
             alt="More info"
