@@ -104,7 +104,7 @@ export const Activities = () => {
         </Link>
 
         <Link
-          href="/student-dashboard/relationship-skills"
+          href="/student-dashboard/sel-objectives"
           className="activities-card"
         >
           <Image

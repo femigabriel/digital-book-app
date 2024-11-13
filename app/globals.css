@@ -280,7 +280,9 @@ body::-webkit-scrollbar-thumb {
   font-size: 2.2rem;
 }
 .bus-stop {
-  background-image: url(../public/images/Background-bus.svg);
+  background: url(../public/images/Background-bus.svg) no-repeat right center,
+  linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
+background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
   height: 100%;
@@ -293,7 +295,9 @@ body::-webkit-scrollbar-thumb {
   background-color: #652d90;
 }
 .good-decision {
-  background-image: url(../public/images/202.svg);
+  background: url(../public/images/202.svg) no-repeat right center,
+  linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
+background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
   height: 100%;
@@ -303,7 +307,9 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
 }
 .self-management {
-  background-image: url(../public/images/image\ 232.svg);
+  background: url(../public/images/image\ 232.svg) no-repeat right center,
+  linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
+background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
   height: 100%;
@@ -313,7 +319,9 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
 }
 .self-awareness {
-  background-image: url(../public/images/205.svg);
+  background: url(../public/images/205.svg) no-repeat right center,
+  linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
+background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
   height: 100%;
@@ -330,7 +338,9 @@ body::-webkit-scrollbar-thumb {
   );
 }
 .optimistic-thinking {
-  background-image: url(../public/images/Background-thinkng.svg);
+  background: url(../public/images/Background-thinkng.svg) no-repeat right center,
+  linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
+background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
   height: 100%;
@@ -345,7 +355,6 @@ body::-webkit-scrollbar-thumb {
 .gradient-border {
   background: linear-gradient(to bottom, #eee0ff66 40%, #ffffff80 50%);
 }
-
 
 .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active {
   background: #ff4ecd;
@@ -362,7 +371,7 @@ body::-webkit-scrollbar-thumb {
   color: #ffffff;
 }
 .score-header {
-  background: linear-gradient(to bottom, #82B77C 100%, #FF8C69 100%);
+  background: linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
 }
 .teacher-zone {
   display: flex;
@@ -386,7 +395,6 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
 
   transition: all 0.2s ease-in-out;
-
 }
 .activities-card:hover {
   transform: scale(1.1);
@@ -397,5 +405,20 @@ body::-webkit-scrollbar-thumb {
   -moz-transition: all 200ms ease-in;
   -moz-transform: scale(1.1);
   transition: all 200ms ease-in;
- 
+}
+
+.activites {
+  background: linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
+}
+.sel-obj {
+  background: url(../public/images/20.svg) no-repeat right center,
+    linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
