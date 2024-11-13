@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Modal, notification } from "antd";
 
+// Add `score` to Props interface
 interface Props {
   selectedAnswer: number | null;
   onBackClick: () => any;
   userId: string;
   activityName: string;
+  score: number;  
 }
 
 export const SelfManagementFinalScore = ({
@@ -14,11 +16,11 @@ export const SelfManagementFinalScore = ({
   onBackClick,
   userId,
   activityName,
+  score,  
 }: Props) => {
   const [showConfetti, setShowConfetti] = useState(false);
   const celebrationSound = "/sounds/756229__timbre__yeah-man-rock-roll.flac";
   const correctAnswer = 6;
-  const score = selectedAnswer === correctAnswer ? 20 : 0;
 
   useEffect(() => {
     if (selectedAnswer === correctAnswer) {
@@ -61,7 +63,6 @@ export const SelfManagementFinalScore = ({
     }
   };
 
-  // Reload the page to retake the activity
   const handleRetakeActivity = () => {
     window.location.reload();
   };
