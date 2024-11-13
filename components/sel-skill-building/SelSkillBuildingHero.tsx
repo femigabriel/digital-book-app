@@ -1,25 +1,29 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { StudentResourcesBtn } from "../landing-page/resources/StudentResourcesBtn";
 
-export const TeacherZoneHero = () => {
+export const SelSkillBuildingHero = () => {
   return (
-    <div className="w-full min-h-screen bg-[#FFFEE9] teacher- flex flex-col justify-between">
+    <div className="w-full min-h-screen bg-[#FFFEE9] flex flex-col justify-between">
       {/* Hero Image */}
-      <div className="flex w-full justify-between">
-        <div className="flex justify-center items-center px-10">
-          <StudentResourcesBtn />
-        </div>
-        <div className="">
-          <Image
-            src="/images/Group 1000007885.svg"
-            alt="about-hero"
-            width={516}
-            height={516}
-            className="w-full max-w-[816.19px]"
-          />
-        </div>
+      <div className="flex-grow flex justify-center items-center">
+        <Image
+          src="/images/Group 1000007874.svg"
+          alt="about-hero"
+          width={516}
+          height={516}
+          className="w-full max-w-[516.19px]"
+        />
+      </div>
+
+      <div className="flex justify-between px-10 my-"></div>
+      <div className="flex flex-col justify-center items-center">
+        <h3 className="text-[#303030] text-5xl">Welcome to your dashboard</h3>
+        <Link href="/">
+          <p className="text-[#4A4A4A] text-xl mt-3 cursor-pointer">
+            Let's begin.
+          </p>
+        </Link>
       </div>
 
       {/* Footer Navigation */}

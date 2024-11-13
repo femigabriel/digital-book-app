@@ -364,3 +364,20 @@ body::-webkit-scrollbar-thumb {
 .score-header {
   background: linear-gradient(to bottom, #82B77C 100%, #FF8C69 100%);
 }
+.teacher-zone {
+  display: flex;
+  align-items: start;
+  min-height: 100vh;
+  position: relative;
+}
+
+.teacher-zone::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 70%;
+  background: url("../public/images/Group\ 1000007885.svg") no-repeat center;
+  background-size: contain;
+}
