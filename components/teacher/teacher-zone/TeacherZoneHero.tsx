@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { StudentResourcesBtn } from "../landing-page/resources/StudentResourcesBtn";
+import { StudentResourcesBtn } from "../../landing-page/resources/StudentResourcesBtn";
 
 export const TeacherZoneHero = () => {
   return (

@@ -368,9 +368,7 @@ body::-webkit-scrollbar-thumb {
 .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
   border: none;
 }
-.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: #ffffff;
-}
+
 .score-header {
   background: linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
 }
@@ -423,3 +421,14 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
   align-items: center;
 }
+
+.recent-users .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #000000;
+}
+.recent-users .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active {
+  color: #ffffff !important;
+}
+.recent-users .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn { 
+    color: #ffffff !important;
+
+  }
