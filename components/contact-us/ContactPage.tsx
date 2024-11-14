@@ -8,7 +8,7 @@ import { ContactForm } from "./ContactForm";
 export const ContactPage = () => {
   return (
     <Layout>
-      <Section className=" h-screen">
+      <Section className=" ">
         <ContactUsHero />
       </Section>
       <section className="bg-[#FFFDDA]  w-full">

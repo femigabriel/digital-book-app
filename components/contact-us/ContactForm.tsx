@@ -1,12 +1,43 @@
-import React from "react";
-import { Form, Input, Button } from "antd";
+import React, { useState } from "react";
+import { Form, Input, Button, notification } from "antd";
 import Image from "next/image";
 
 export const ContactForm: React.FC = () => {
   const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
 
-  const onFinish = (values: any) => {
-    console.log("Form Values:", values);
+  const onFinish = async (values: any) => {
+    setLoading(true); // Show loading spinner
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        notification.success({
+          message: 'Message Sent',
+          description: 'Your message has been sent successfully.',
+        });
+        form.resetFields();
+      } else {
+        const errorData = await response.json();
+        notification.error({
+          message: 'Message Failed',
+          description: `Failed to send message: ${errorData.error}`,
+        });
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      notification.error({
+        message: 'Error',
+        description: 'There was an error sending your message.',
+      });
+    } finally {
+      setLoading(false); // Hide loading spinner
+    }
   };
 
   return (
@@ -19,7 +50,7 @@ export const ContactForm: React.FC = () => {
             name="name"
             rules={[{ required: true, message: "Please enter your name" }]}
           >
-            <Input placeholder="Enter your name" />
+            <Input placeholder="Enter your name" className="bg-inherit border border-[#D9D9D9] h-[45px]"/>
           </Form.Item>
 
           <Form.Item
@@ -30,7 +61,7 @@ export const ContactForm: React.FC = () => {
               { type: "email", message: "Please enter a valid email" },
             ]}
           >
-            <Input placeholder="Enter your email address" />
+            <Input placeholder="Enter your email address"      className="bg-inherit border border-[#D9D9D9] h-[45px]" />
           </Form.Item>
 
           <Form.Item
@@ -38,11 +69,14 @@ export const ContactForm: React.FC = () => {
             name="message"
             rules={[{ required: true, message: "Please write your message" }]}
           >
-            <Input.TextArea placeholder="Write your message here" rows={4} />
+            <Input.TextArea 
+            placeholder="Write your message here" rows={4}
+                 className="bg-inherit border border-[#D9D9D9]"
+             />
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={loading}>
               Submit
             </Button>
           </Form.Item>

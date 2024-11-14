@@ -60,7 +60,7 @@ export const TeacherZoneHero = () => {
             />
           </div>
         </Link>
-        <Link href="/sel-lit">
+        <Link href="/sel-skill-building">
           <div className="cursor-pointer">
             <Image
               src="/images/SEL and Literature Button.svg"
