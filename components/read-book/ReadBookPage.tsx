@@ -15,7 +15,7 @@ export default function ReadBookPage() {
         <HTMLFlipBook
           width={500}
           height={600}
-          className="bg-[#FFFEE9] shadow-xl rounded"
+          className="bg-[#FFFEE9] shadow-2xl rounded border"
           style={{ background: "#FFFEE9" }}
           startPage={0}
           flippingTime={1000}
