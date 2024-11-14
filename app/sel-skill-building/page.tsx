@@ -1,11 +1,11 @@
 "use client";
 
-import { SelSkillBuilding } from "@/components/sel-skill-building/SelSkillBuilding";
+import { SelSkillBuildingPage } from "@/components/sel-skill-building/SelSkillBuildingPage";
 
-export default function SelSkillBuildingPage() {
+export default function SelSkillBuilding() {
   return (
     <div>
-      <SelSkillBuilding />
+      <SelSkillBuildingPage />
     </div>
   );
 }
