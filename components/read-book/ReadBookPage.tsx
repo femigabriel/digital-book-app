@@ -15,7 +15,7 @@ export default function ReadBookPage() {
         <HTMLFlipBook
             width={500}
             height={600}
-            className="bg-[#FFFEE9] shadow-xl rounded border"
+            className="bg-[#FFFEE9] shadow-xl rounded"
             style={{ background: "#FFFEE9" }}
             startPage={0}
             flippingTime={1000}
@@ -38,8 +38,8 @@ export default function ReadBookPage() {
             disableFlipByClick={false}
         >
           {/* 1st page */}
-          <div className="bg-[#FFFEE9] h-full w-full flex justify-center items-center">
-            <div className="h-full w-full bg-[#FFFEE9]">
+          <div className="bg-[#F8F8F8] h-full w-full flex justify-center items-center">
+            <div className="h-full w-full bg-[#F8F8F8]">
               <Image
                 width={680}
                 height={537}
