@@ -13,29 +13,29 @@ export default function ReadBookPage() {
       </div>
       <div className="flex justify-center items-center w-full  h-screen lg:h-full lg:py-10">
         <HTMLFlipBook
-          width={500}
-          height={600}
-          className="bg-[#FFFEE9] border shadow-xl rounded"
-          style={{ background: "#FFFEE9" }}
-          startPage={0}
-          flippingTime={1000}
-          size={"fixed"}
-          minWidth={500}
-          maxWidth={500}
-          minHeight={600}
-          maxHeight={600}
-          drawShadow={true}
-          usePortrait={true}
-          startZIndex={0}
-          autoSize={true}
-          maxShadowOpacity={1}
-          showCover={false}
-          mobileScrollSupport={true}
-          clickEventForward={true}
-          useMouseEvents={true}
-          swipeDistance={0}
-          showPageCorners={true}
-          disableFlipByClick={false}
+            width={500}
+            height={600}
+            className="bg-[#FFFEE9] shadow-xl rounded"
+            style={{ background: "#FFFEE9" }}
+            startPage={0}
+            flippingTime={1000}
+            size="stretch" // Use "stretch" for responsive double-page layout
+            minWidth={500}
+            maxWidth={500}
+            minHeight={600}
+            maxHeight={600}
+            drawShadow={true}
+            usePortrait={true}
+            startZIndex={0}
+            autoSize={true}
+            maxShadowOpacity={1}
+            showCover={false}
+            mobileScrollSupport={true}
+            clickEventForward={true}
+            useMouseEvents={true}
+            swipeDistance={0}
+            showPageCorners={true}
+            disableFlipByClick={false}
         >
           {/* 1st page */}
           <div className="bg-[#FFFEE9] h-full w-full flex justify-center items-center">
