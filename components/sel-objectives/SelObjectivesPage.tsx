@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Introducton } from "./Introducton";
 import { useUser } from "@/context/UserContext";
 import { Introduction2 } from "./Introduction2";
+import RespectingBoundariesActivity from "./RespectingBoundariesActivity";
+import RecognizingTriggersActivity from "./RecognizingTriggersActivity";
 
 export const SelObjectivesPage = () => {
   const [step, setStep] = useState(0);
   const [score, setScore] = useState<number>(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);  
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const user = useUser();
   const [isUserLoaded, setIsUserLoaded] = useState(false);
 
@@ -28,18 +30,34 @@ export const SelObjectivesPage = () => {
         );
 
       case 1:
-        return <Introduction2 onNextClick={handleNext} onBackClick={handleBack} />;
+        return (
+          <Introduction2 onNextClick={handleNext} onBackClick={handleBack} />
+        );
+      case 2:
+        return (
+          <RespectingBoundariesActivity
+            onNextClick={handleNext}
+            onBackClick={handleBack}
+          />
+        );
+      case 3:
+        return (
+          <RecognizingTriggersActivity
+            onNextClick={handleNext}
+            onBackClick={handleBack}
+          />
+        );
 
-    //   default:
-    //     return (
-    //       <SelfManagementFinalScore
-    //         selectedAnswer={selectedAnswer}  
-    //         onBackClick={handleBack}          
-    //         score={score}
-    //         userId={user?._id || "Unknown User"} 
-    //         activityName="Bus Stop Bop"
-    //       />
-    //     );
+      //   default:
+      //     return (
+      //       <SelfManagementFinalScore
+      //         selectedAnswer={selectedAnswer}
+      //         onBackClick={handleBack}
+      //         score={score}
+      //         userId={user?._id || "Unknown User"}
+      //         activityName="Bus Stop Bop"
+      //       />
+      //     );
     }
   };
 

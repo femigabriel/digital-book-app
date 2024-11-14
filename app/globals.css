@@ -281,8 +281,8 @@ body::-webkit-scrollbar-thumb {
 }
 .bus-stop {
   background: url(../public/images/Background-bus.svg) no-repeat right center,
-  linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
-background-size: contain;
+    linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
+  background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
   height: 100%;
@@ -296,8 +296,8 @@ background-size: contain;
 }
 .good-decision {
   background: url(../public/images/202.svg) no-repeat right center,
-  linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
-background-size: contain;
+    linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
+  background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
   height: 100%;
@@ -308,8 +308,8 @@ background-size: contain;
 }
 .self-management {
   background: url(../public/images/image\ 232.svg) no-repeat right center,
-  linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
-background-size: contain;
+    linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
+  background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
   height: 100%;
@@ -320,8 +320,8 @@ background-size: contain;
 }
 .self-awareness {
   background: url(../public/images/205.svg) no-repeat right center,
-  linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
-background-size: contain;
+    linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
+  background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
   height: 100%;
@@ -338,9 +338,10 @@ background-size: contain;
   );
 }
 .optimistic-thinking {
-  background: url(../public/images/Background-thinkng.svg) no-repeat right center,
-  linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
-background-size: contain;
+  background: url(../public/images/Background-thinkng.svg) no-repeat right
+      center,
+    linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
+  background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
   height: 100%;
@@ -416,7 +417,7 @@ background-size: contain;
   background-size: contain;
   background-position: right center;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;

@@ -19,7 +19,7 @@ export default function ReadBookPage() {
             style={{ background: "#FFFEE9" }}
             startPage={0}
             flippingTime={1000}
-            size="stretch" // Use "stretch" for responsive double-page layout
+            size="stretch" 
             minWidth={500}
             maxWidth={500}
             minHeight={600}

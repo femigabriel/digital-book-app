@@ -55,7 +55,7 @@ export const Introduction2 = ({ onNextClick, onBackClick }: Props) => {
         </div>
       </div>
 
-      <div className="sel-obj h-full w-full">
+      <div className="sel-obj !h-screen w-full">
         <div className="bg-[#FFFEE9] w-full max-w-[750px] flex justify-center rounded-[10px] shadow-xl items-center">
           <div className="px-5 py-5">
             <div className="flex flex-col justify-center items-center">
