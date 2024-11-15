@@ -8,6 +8,16 @@ import Link from 'next/link';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
 const TeacherScoreSheet = () => {
+  // List of section names
+  const sections = [
+    "Self-Awareness",
+    "Self-Management",
+    "Social Awareness",
+    "Relationship Skills",
+    "Decision Making",
+    "Optimistic Thinking",
+  ];
+
   // Sample data for the chart
   const chartData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -38,6 +48,7 @@ const TeacherScoreSheet = () => {
       },
     ],
   };
+  
 
   const chartOptions = {
     responsive: true,
@@ -91,8 +102,8 @@ const TeacherScoreSheet = () => {
       },
     },
   };
-  
 
+  
   return (
     <div className="p-6 bg-[#F9F0F7] h-full">
       {/* Back Button */}
@@ -138,26 +149,26 @@ const TeacherScoreSheet = () => {
         <p className="text-sm text-gray-600 mb-4">Lesson Scores (Out of 10) Total Score Completion Status</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {[...Array(6)].map((_, index) => (
+          {sections.map((section, index) => (
             <div key={index} className="border border-gray-300 p-4 rounded-lg">
-              <h3 className="font-semibold mb-2">{index + 1}. Section Title</h3>
+              <h3 className="font-semibold mb-2">{section}</h3> {/* Display the section name */}
               <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr>
+                <thead className=''>
+                  <tr className=''>
                     <th className="border-b p-1 font-medium text-gray-700">Lesson</th>
                     <th className="border-b p-1 font-medium text-gray-700">Score</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[...Array(6)].map((_, lessonIndex) => (
-                    <tr key={lessonIndex}>
-                      <td className="p-1">Lesson {lessonIndex + 1}</td>
+                    <tr key={lessonIndex} className='border'>
+                      <td className="p-1 ">Lesson {lessonIndex + 1}</td>
                       <td className="p-1 text-center">10</td>
                     </tr>
                   ))}
                 </tbody>
                 <tfoot>
-                  <tr>
+                  <tr className='bg-[#ECE0F5] border'>
                     <td className="p-1 font-semibold">Total</td>
                     <td className="p-1 text-center font-semibold">50</td>
                   </tr>

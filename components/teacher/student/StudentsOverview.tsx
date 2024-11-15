@@ -25,6 +25,7 @@ const StudentsOverview = () => {
       try {
         const response = await fetch("/api/leaderboard"); // Replace with your actual endpoint path
         const data = await response.json();
+        console.log(data.users)
         if (data.users) {
           const formattedData = data.users.map((user: any, index: number) => {
             const activityCount = user.scores.length; // Number of activities completed
