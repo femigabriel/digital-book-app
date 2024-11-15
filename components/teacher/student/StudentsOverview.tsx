@@ -84,7 +84,7 @@ const StudentsOverview = () => {
       title: "Grades",
       dataIndex: "grade",
       key: "grade",
-      render: (text: string) => <span className="font-bold">{text}</span>,
+      render: (text: string) => <span className="font-bold">{text} Grade</span>,
     },
     
     {
