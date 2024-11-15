@@ -16,6 +16,7 @@ interface LeaderboardUser {
 const StudentsOverview = () => {
   const [leaderboardData, setLeaderboardData] = useState<LeaderboardUser[]>([]);
   const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState<string>(""); // State for search term
 
   // Fetch the leaderboard data
   useEffect(() => {
@@ -56,6 +57,11 @@ const StudentsOverview = () => {
 
     fetchLeaderboard();
   }, []);
+
+  // Filter leaderboard data based on the search term
+  const filteredData = leaderboardData.filter((user) =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const columns = [
     {
@@ -130,12 +136,14 @@ const StudentsOverview = () => {
             placeholder="Search"
             prefix={<SearchOutlined />}
             className="max-w-xs border-gray-300 rounded-md"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)} // Update searchTerm on input change
           />
         </div>
 
         <Table
           columns={columns}
-          dataSource={leaderboardData}
+          dataSource={filteredData} // Use the filtered data
           pagination={false}
           bordered
           loading={loading}

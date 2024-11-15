@@ -3,6 +3,7 @@ import { Input, DatePicker, Button } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
+import Link from 'next/link';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
@@ -95,10 +96,10 @@ const TeacherScoreSheet = () => {
   return (
     <div className="p-6 bg-[#F9F0F7] h-full">
       {/* Back Button */}
-      <div className="flex items-center mb-6">
+      <Link className="flex items-center mb-6" href='/teacher-dashboard/students'>
         <ArrowLeftOutlined className="text-lg" />
         <span className="ml-2 text-[#652D90] cursor-pointer">Back to Students</span>
-      </div>
+      </Link>
 
       {/* Title and Subtitle */}
       <div className="mb-6">
