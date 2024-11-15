@@ -131,7 +131,7 @@ const StudentsOverview = () => {
         </p>
 
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-semibold">
+          <h3 className="text-2xl">
             Full list of all the students.
           </h3>
           <Input
