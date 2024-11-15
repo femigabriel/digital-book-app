@@ -25,6 +25,7 @@ export const HeroPage = () => {
       <div className="flex justify-between px-10 w-full">
         {/*Left content  */}
         <div className="">
+        <Link href="/teacher-dashboard">
           <div className="cursor-pointer">
             <Image
               src="/images/Group 1000007853.svg"
@@ -35,6 +36,7 @@ export const HeroPage = () => {
               draggable="false"
             />
           </div>
+          </Link>
           <Link href="/teacher-zone">
             <div className="cursor-pointer my-3">
               <Image

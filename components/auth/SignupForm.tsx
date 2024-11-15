@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Spin, notification } from "antd";
+import { Form, Input, Button, Spin, notification, Select } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -40,6 +40,7 @@ const SignupForm = () => {
     name: string;
     email: string;
     avatarIndex: number;
+    grade: string;
   }) => {
     setLoading(true);
     try {
@@ -48,15 +49,15 @@ const SignupForm = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
         notification.success({
           message: "Success",
           description: data.message,
         });
-        router.push("/login"); // Redirect to login page on success
+        router.push("/login");
       } else {
         throw new Error(data.error || "Failed to register user");
       }
@@ -69,6 +70,7 @@ const SignupForm = () => {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="div">
@@ -176,10 +178,23 @@ const SignupForm = () => {
                 >
                   <Input placeholder="Enter your email" />
                 </Form.Item>
+                <Form.Item
+                  name="grade"
+                  label="Grade"
+                  rules={[
+                    { required: true, message: "Please select your grade" },
+                  ]}
+                >
+                  <Select placeholder="Select your grade">
+                    <Select.Option value="3rd">3rd Grade</Select.Option>
+                    <Select.Option value="4th">4th Grade</Select.Option>
+                    <Select.Option value="5th">5th Grade</Select.Option>
+                  </Select>
+                </Form.Item>
 
                 <Form.Item
                   name="avatarIndex"
-                  initialValue={selectedAvatar} // Pre-set avatarIndex for validation
+                  initialValue={selectedAvatar}
                   rules={[
                     { required: true, message: "Please select an avatar" },
                   ]}
