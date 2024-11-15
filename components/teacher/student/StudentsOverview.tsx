@@ -6,7 +6,7 @@ interface LeaderboardUser {
   key: string;
   rank: number;
   name: string;
-  grade: string; // Add grade if it’s part of the data
+  grade: string; // Adjust according to your data, or remove if not needed
   activities: number;
   status: string;
   avatar: string;
@@ -24,25 +24,27 @@ const StudentsOverview = () => {
       try {
         const response = await fetch("/api/leaderboard"); // Replace with your actual endpoint path
         const data = await response.json();
-        console.log(data.users)
         if (data.users) {
-          const formattedData = data.users.map((user: any, index: number) => ({
-            key: user.id || index.toString(), // Ensure unique key
-            rank: index + 1,
-            name: user.name,
-            grade: user.grade || "N/A", // Adjust according to actual data fields
-            activities: user.scores.activities || 0, // Assuming scores has activities count
-            status: user.status || "Incomplete",
-            avatar: user.avatar || "", // Optional: fallback avatar
-            bgColor:
-              index === 0
-                ? "bg-yellow-400"
-                : index === 1
-                ? "bg-green-300"
-                : index === 2
-                ? "bg-amber-300"
-                : "bg-white", // Set white background for ranks beyond 3
-          }));
+          const formattedData = data.users.map((user: any, index: number) => {
+            const activityCount = user.scores.length; // Number of activities completed
+            return {
+              key: user._id || index.toString(), // Ensure unique key
+              rank: index + 1,
+              name: user.name,
+              grade: user.grade || "N/A", // Adjust or remove if grade is not relevant
+              activities: activityCount, // Total number of activities
+              status: activityCount >= 6 ? "Complete" : "Incomplete",
+              avatar: user.avatar || "", // Optional: fallback avatar
+              bgColor:
+                index === 0
+                  ? "bg-yellow-400"
+                  : index === 1
+                  ? "bg-green-300"
+                  : index === 2
+                  ? "bg-amber-300"
+                  : "bg-white", // Set white background for ranks beyond 3
+            };
+          });
           setLeaderboardData(formattedData);
         }
       } catch (error) {
@@ -81,8 +83,8 @@ const StudentsOverview = () => {
       title: "Activities",
       dataIndex: "activities",
       key: "activities",
-      render: (text: number) => (
-        <span className="font-bold">{text.toString().padStart(2, "0")}</span>
+      render: (activities: number) => (
+        <span className="font-bold">{activities.toString().padStart(2, "0")}</span>
       ),
     },
     {
@@ -99,7 +101,7 @@ const StudentsOverview = () => {
       ),
     },
     {
-      title: "",
+      title: "Action",
       key: "action",
       render: () => (
         <Button
