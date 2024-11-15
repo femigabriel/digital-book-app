@@ -1,11 +1,11 @@
 "use client";
 
-import TeacherScoreSheet from "@/components/teacher/student/TeacherScoreSheet";
+import { Student } from "@/components/teacher/student/Student";
 
 export default function studentspage() {
   return (
-    <div>
-      <TeacherScoreSheet />
+    <div className="div">
+      <Student />
     </div>
   );
 }

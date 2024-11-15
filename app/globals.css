@@ -432,3 +432,18 @@ body::-webkit-scrollbar-thumb {
     color: #ffffff !important;
 
   }
+
+  .ant-table-custom .ant-table-thead > tr > th {
+    background-color: #e9d8fd; /* Light purple */
+    color: #6b21a8; /* Dark purple */
+    font-weight: 500;
+  }
+  
+  .ant-table-custom .ant-table-tbody > tr > td {
+    background-color: #fafafa;
+  }
+  
+  .ant-table-custom .ant-table-tbody > tr:hover > td {
+    background-color: #f3f4f6;
+  }
+  
