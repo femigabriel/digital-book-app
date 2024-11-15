@@ -6,11 +6,11 @@ export async function GET() {
   await dbConnect();
 
   try {
-    // Fetch all users and sort by the 'scores' field, assuming 'scores' is an array of integers
+    // Fetch all users and include the grade field
     const users = await User.find()
-      .select("name avatar scores")  // Adjust this based on the actual fields in your User model
-      .sort({ "scores.total": -1 })  // Assuming you have a 'total' field in the 'scores' object
-      .limit(10);  // Limit to top 10 users, or you can adjust this as needed
+      .select("name avatar scores grade") // Include the 'grade' field
+      .sort({ "scores.total": -1 })       // Adjust the sorting logic if needed
+      .limit(10);                         // Limit to top 10 users
 
     // If no users are found, return an empty array
     if (!users.length) {

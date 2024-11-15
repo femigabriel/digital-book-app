@@ -86,6 +86,7 @@ const StudentsOverview = () => {
       key: "grade",
       render: (text: string) => <span className="font-bold">{text}</span>,
     },
+    
     {
       title: "Activities",
       dataIndex: "activities",
