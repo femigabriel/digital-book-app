@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Table, Tag, Avatar, Button, Input } from "antd";
-import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
+import {
+  EyeOutlined,
+  SearchOutlined,
+  EditOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 
 interface LeaderboardUser {
   key: string;
   rank: number;
   name: string;
-  grade: string; // Adjust according to your data, or remove if not needed
+  grade: string; 
   activities: number;
   status: string;
   avatar: string;
@@ -25,7 +30,7 @@ const StudentsOverview = () => {
       try {
         const response = await fetch("/api/leaderboard"); // Replace with your actual endpoint path
         const data = await response.json();
-        console.log(data.users)
+        console.log(data.users);
         if (data.users) {
           const formattedData = data.users.map((user: any, index: number) => {
             const activityCount = user.scores.length; // Number of activities completed
@@ -86,13 +91,15 @@ const StudentsOverview = () => {
       key: "grade",
       render: (text: string) => <span className="font-bold">{text} Grade</span>,
     },
-    
+
     {
       title: "Activities",
       dataIndex: "activities",
       key: "activities",
       render: (activities: number) => (
-        <span className="font-bold">{activities.toString().padStart(2, "0")}</span>
+        <span className="font-bold">
+          {activities.toString().padStart(2, "0")}
+        </span>
       ),
     },
     {
@@ -112,11 +119,11 @@ const StudentsOverview = () => {
       title: "Action",
       key: "action",
       render: () => (
-        <Button
-          shape="circle"
-          icon={<EyeOutlined />}
-          style={{ backgroundColor: "#7C3AED", color: "white" }}
-        />
+        <div className="flex space-x-2 justify-center">
+          <Button icon={<EyeOutlined />} />
+          <Button icon={<EditOutlined />} />
+          <Button icon={<DeleteOutlined />} />
+        </div>
       ),
     },
   ];
@@ -131,15 +138,13 @@ const StudentsOverview = () => {
         </p>
 
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-2xl">
-            Full list of all the students.
-          </h3>
+          <h3 className="text-2xl">Full list of all the students.</h3>
           <Input
             placeholder="Search"
             prefix={<SearchOutlined />}
             className="max-w-xs border-gray-300 rounded-md"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} // Update searchTerm on input change
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 
