@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <div className="fixed top-0 left-0 w-full z-10 flex justify-between items-center px-5 h-[90px] bg-white shadow">
       <div className="mt-5">
-        <Link href="/" className="flex items-center justify-center">
+        <Link href="/teacher-dashboard" className="flex items-center justify-center">
           <Image
             src="/images/Logo.svg"
             alt="Logo"

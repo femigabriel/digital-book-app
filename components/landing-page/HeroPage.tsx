@@ -25,7 +25,7 @@ export const HeroPage = () => {
       <div className="flex justify-between px-10 w-full">
         {/*Left content  */}
         <div className="">
-        <Link href="/teacher-dashboard">
+        <Link href="/teacher-dashboard/login">
           <div className="cursor-pointer">
             <Image
               src="/images/Group 1000007853.svg"

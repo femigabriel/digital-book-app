@@ -446,4 +446,15 @@ body::-webkit-scrollbar-thumb {
   .ant-table-custom .ant-table-tbody > tr:hover > td {
     background-color: #f3f4f6;
   }
-  
+  .teacher-auth {
+    background: url(../public/images/19.svg) no-repeat right center,
+    linear-gradient(to bottom, #82b77c 100%, #ff8c69 100%);
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
