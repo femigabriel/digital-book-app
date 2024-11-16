@@ -101,11 +101,11 @@ export const SscoreBoardHeader = () => {
             </>
           )}
           <Dropdown menu={{ items }}>
-            <div onClick={(e) => e.preventDefault()}>
+            <button onClick={(e) => e.preventDefault()}>
               <Space>
                 <DownOutlined />
               </Space>
-            </div>
+            </button>
           </Dropdown>
         </div>
       </header>

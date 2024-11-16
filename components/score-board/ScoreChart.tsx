@@ -22,9 +22,9 @@ export default function ScoreChart() {
       style={{ width: 300, height: 200 }} 
       className=''>
         <Doughnut data={data} />
-        <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">
+        {/* <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">
           5000
-        </div>
+        </div> */}
       </div>
 
       <div className="space-y-2">
