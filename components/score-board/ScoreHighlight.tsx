@@ -18,8 +18,8 @@ const activityColors = [
 
 export default function ScoreHighlight() {
   const user = useUser();
-
-  if (!user || !user.scores || user.scores.length === 0) {
+console.log(user)
+  if (!user || !user?.scores || user.scores.length === 0) {
     return <div>No scores available.</div>;
   }
 

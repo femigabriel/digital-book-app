@@ -153,7 +153,7 @@ const RecentUsers = () => {
         <div className="flex space-x-2 justify-center">
           <Button icon={<EyeOutlined />} />
           <Button icon={<EditOutlined />} />
-          <Button icon={<DeleteOutlined />} />
+          <Button icon={<DeleteOutlined className="text-red-500" />} />
         </div>
       ),
     },

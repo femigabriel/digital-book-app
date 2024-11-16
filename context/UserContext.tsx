@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+// Define the types for User and Teacher (can be the same or different based on your schema)
 interface Score {
   activityName: string;
   score: number;
@@ -18,10 +19,13 @@ interface User {
 
 interface Teacher {
   name: string;
-  email: string;
   avatar: string;
   _id: string;
+  scores: Score[];
 }
+
+type UserOrTeacher = User | Teacher;
+
 
 const UserContext = createContext<User | Teacher | null>(null);
 
