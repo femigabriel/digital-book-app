@@ -1,24 +1,120 @@
-import React, { useState } from "react";
-import { Input, Avatar, Tabs, Table, Button } from "antd";
+import React, { useEffect, useState } from "react";
+import { Input, Avatar, Tabs, Table, Button, message } from "antd";
 import {
   SearchOutlined,
   EyeOutlined,
   EditOutlined,
   DeleteOutlined,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 
+interface StudentData {
+  key: string;
+  rank: number;
+  name: string;
+  grade: string;
+  activities: number;
+  status: string;
+  avatar: string;
+  bgColor: string;
+}
+
+interface TeacherData {
+  key: string;
+  name: string;
+  email: string;
+  date: string;
+}
+
 const RecentUsers = () => {
-  const allUsers = [
-    { name: "Marvin McKinney", email: "Email@example.com", date: "11/11/2024", role: "Teacher" },
-    { name: "Savannah Nguyen", email: "Email@example.com", date: "11/11/2024", role: "Child" },
-    // Add more users with roles
-  ];
-
   const [activeTab, setActiveTab] = useState("All");
+  const [studentsData, setStudentsData] = useState<StudentData[]>([]);
+  const [teachers, setTeachers] = useState<TeacherData[]>([]);
+  const [loading, setLoading] = useState(false);
 
-  const filteredUsers = allUsers.filter((user) => 
-    activeTab === "All" || user.role === activeTab
+  // Fetch the student's data
+  useEffect(() => {
+    const fetchLeaderboard = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("/api/leaderboard");
+        const data = await response.json();
+        console.log(data );
+        if (data.users) {
+          const formattedData = data.users.map((user: any, index: number) => {
+            const activityCount = user.scores.length;
+            return {
+              key: user._id || index.toString(),
+              rank: index + 1,
+              name: user.name,
+              grade: user.grade || "N/A", // Adjust or remove if grade is not relevant
+              activities: activityCount, // Total number of activities
+              status: activityCount >= 6 ? "Complete" : "Incomplete",
+              avatar: user.avatar || "", // Optional: fallback avatar
+              bgColor:
+                index === 0
+                  ? "bg-yellow-400"
+                  : index === 1
+                  ? "bg-green-300"
+                  : index === 2
+                  ? "bg-amber-300"
+                  : "bg-white", // Set white background for ranks beyond 3
+            };
+          });
+          setStudentsData(formattedData);
+        }
+      } catch (error) {
+        console.error("Error fetching leaderboard data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLeaderboard();
+  }, []);
+
+  // Fetch the Teacher's data
+  useEffect(() => {
+    const fetchTeachers = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("/api/teacher/getTeachers");
+        const data = await response.json();
+        console.log(data.teachers);
+
+        if (response.ok) {
+          // Combine firstName and lastName for teachers
+          const formattedTeachers = data.teachers.map((teacher: any) => ({
+            key: teacher._id,
+            name: `${teacher.firstName} ${teacher.lastName}`,
+            email: teacher.email,
+            date: teacher.createdAt || "N/A",
+          }));
+          setTeachers(formattedTeachers);
+        } else {
+          message.error(data.error || "Failed to fetch teachers.");
+        }
+      } catch (error) {
+        console.error("Error fetching teachers:", error);
+        message.error("Something went wrong. Please try again.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTeachers();
+  }, []);
+
+  // Combine teacher and student data for "All" tab
+  const allUsers = [...studentsData, ...teachers];
+
+  // Filter users based on the active tab
+  const filteredUsers = allUsers.filter((user) =>
+    activeTab === "All"
+      ? true
+      : activeTab === "Students"
+      ? studentsData.some((student) => student.name === user.name)
+      : teachers.some((teacher) => teacher.name === user.name)
   );
 
   const columns = [
@@ -26,23 +122,30 @@ const RecentUsers = () => {
       title: "Image",
       dataIndex: "avatar",
       key: "avatar",
-      render: () => <Avatar size={40} icon={<UserOutlined />} />,
+      render: (avatar: string) => (
+        <Avatar
+          size={40}
+          icon={avatar ? <img src={`/avatar/${avatar}`} /> : <UserOutlined />}
+        />
+      ),
     },
     {
-      title: "Users",
+      title: "Name",
       dataIndex: "name",
       key: "name",
     },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-    },
-    {
-      title: "Date",
-      dataIndex: "date",
-      key: "date",
-    },
+    // {
+    //   title: "Email",
+    //   dataIndex: "email",
+    //   key: "email",
+    //   render: (email: string) => email || "N/A",
+    // },
+    // {
+    //   title: "Date",
+    //   dataIndex: "date",
+    //   key: "date",
+    //   render: (date: string) => date || "N/A",
+    // },
     {
       title: "Action",
       key: "action",
@@ -72,15 +175,16 @@ const RecentUsers = () => {
         type="card"
       >
         <Tabs.TabPane tab="All" key="All" />
-        <Tabs.TabPane tab="Teachers" key="Teacher" />
-        <Tabs.TabPane tab="Children" key="Child" />
+        <Tabs.TabPane tab="Teachers" key="Teachers" />
+        <Tabs.TabPane tab="Students" key="Students" />
       </Tabs>
       <Table
         columns={columns}
         dataSource={filteredUsers}
-        rowKey={(record) => record.email}
+        rowKey={(record) => record.key}
         pagination={{ pageSize: 5 }}
         className="mt-4"
+        loading={loading}
       />
     </div>
   );
