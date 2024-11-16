@@ -1,11 +1,26 @@
 import React, { useContext, useState, useEffect } from "react";
 import Image from "next/image";
-import { Modal } from "antd";
+import { Modal, notification } from "antd";
 import { ResultContext } from "@/context/ResultContext";
 import { useRouter } from "next/navigation";
 import { SoundOutlined, MutedOutlined } from "@ant-design/icons";
 
-export const BusStopFinalScore = () => {
+// export const BusStopFinalScore = () => {
+  interface Props {
+    selectedAnswer: number | null;
+    onBackClick: () => any;
+    userId: string;
+    activityName: string;
+    score: number;  
+  }
+  
+  export const BusStopFinalScore = ({
+    selectedAnswer,
+    onBackClick,
+    userId,
+    activityName,
+    score,  
+  }: Props) => {
   const resultContext = useContext(ResultContext);
   const { state } = resultContext;
   const [isMuted, setIsMuted] = useState(false);
@@ -54,14 +69,44 @@ export const BusStopFinalScore = () => {
     });
   };
 
-  const handleSaveScore = () => {
-    console.log("Score saved:", correctAnswers);
-  };
+
 
   // Reload the page to retake the activity
   const handleRetakeActivity = () => {
     window.location.reload();
   };
+  const saveScoreToDatabase = async () => {
+    try {
+      const response = await fetch("/api/save-score", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId,
+          score,
+          activityName,
+        }),
+      });
+      if (response.ok) {
+        notification.success({
+          message: "Score Saved",
+          description: "Your score has been saved successfully.",
+        });
+      } else {
+        notification.error({
+          message: "Error",
+          description: "Failed to save score. Please try again.",
+        });
+      }
+    } catch (error) {
+      notification.error({
+        message: "Error",
+        description: "An unexpected error occurred.",
+      });
+    }
+  };
+
 
   return (
     <div className="bg-[#FAD8E3] w-full !h-screen">
@@ -110,7 +155,7 @@ export const BusStopFinalScore = () => {
             <div className="flex justify-center items-center mt-5">
               <button
                 className="bg-[#8BC34A] text-white py-2 px-4 rounded-full text-lg font-bold hover:bg-[#7CB342] transition-all"
-                onClick={handleSaveScore}
+                onClick={saveScoreToDatabase}
               >
                 Save Score 📝
               </button>

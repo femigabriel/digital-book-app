@@ -7,7 +7,7 @@ import { useUser } from "@/context/UserContext";
 export const SelfManagementPage = () => {
   const [step, setStep] = useState(0);
   const [score, setScore] = useState<number>(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);  
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const user = useUser();
   const [isUserLoaded, setIsUserLoaded] = useState(false);
 
@@ -34,11 +34,11 @@ export const SelfManagementPage = () => {
       default:
         return (
           <SelfManagementFinalScore
-            selectedAnswer={selectedAnswer}  // Pass selectedAnswer here
-            onBackClick={handleBack}          // Pass onBackClick here
+            selectedAnswer={selectedAnswer}
+            onBackClick={handleBack}
             score={score}
-            userId={user?._id || "Unknown User"}  // Pass the correct user ID here
-            activityName="Bus Stop Bop"
+            userId={user?._id || "Unknown User"}
+            activityName="Self Management"
           />
         );
     }

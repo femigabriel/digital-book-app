@@ -9,15 +9,20 @@ interface UserDocument extends Document {
   avatar: string;
   name: string;
   email: string;
-  grade: string; 
+  grade: string;
   scores: Score[];
 }
 
 const UserSchema = new Schema<UserDocument>({
   avatar: { type: String, required: true },
   name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  grade: { type: String, required: true, enum: ["3rd", "4th", "5th"] }, // Restrict to specific grades
+  email: { 
+    type: String, 
+    required: true, 
+    unique: true, 
+    match: [/^\S+@\S+\.\S+$/, "Invalid email format"], 
+  },
+  grade: { type: String, required: true, enum: ["3rd", "4th", "5th"] },
   scores: [
     {
       activityName: { type: String, required: true },
@@ -26,9 +31,5 @@ const UserSchema = new Schema<UserDocument>({
   ],
 });
 
-if (models.User) {
-  delete models.User; // Clear cached model
-}
-
-const User = model<UserDocument>("User", UserSchema);
+const User = models.User || model<UserDocument>("User", UserSchema);
 export default User;

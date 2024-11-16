@@ -51,10 +51,11 @@ export const RelationshipSkillsPage = () => {
         if (isUserLoaded) {
           return (
             <FinalScore
-              score={score}
-              userId={user?._id || "Unknown User"}  // Pass the correct user ID here
-              activityName="Relationship Skills"
-            />
+            score={score}
+            userId={user?._id || ""}  
+            activityName="Relationship Skills"
+          />
+          
           );
         } else {
           return <div>Loading...</div>;

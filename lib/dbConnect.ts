@@ -1,5 +1,6 @@
 import mongoose, { Connection } from 'mongoose';
 
+// const MONGODB_URI = process.env.MONGODB_URI || "";
 const MONGODB_URI = "mongodb+srv://Eatsumn:Eatsumn@cluster0.glsj1ah.mongodb.net/sabrina-project?appName=Cluster0";
 
 if (!MONGODB_URI) {
@@ -20,9 +21,12 @@ async function dbConnect() {
     cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => {
       console.log("Connected to MongoDB");
       return mongoose.connection;
+    }).catch((err) => {
+      console.error("MongoDB connection error:", err);
+      throw err;
     });
   }
-  
+
   cached.conn = await cached.promise;
   return cached.conn;
 }

@@ -6,8 +6,8 @@ import { SoundOutlined, MutedOutlined } from "@ant-design/icons"; // Import icon
 
 interface FinalScoreProps {
   score: number;
-  userId: string; 
-  activityName: string; 
+  userId: string;
+  activityName: string;
 }
 
 export const FinalScore = ({
@@ -15,10 +15,9 @@ export const FinalScore = ({
   userId,
   activityName,
 }: FinalScoreProps) => {
-  
   const [showConfetti, setShowConfetti] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  
+
   const celebrationSound = "/sounds/756229__timbre__yeah-man-rock-roll.flac";
   const router = useRouter();
   const audio = new Audio(celebrationSound);
@@ -34,9 +33,6 @@ export const FinalScore = ({
       audio.currentTime = 0;
     };
   }, [isMuted]);
-
-
-  
 
   const handleMuteToggle = () => {
     setIsMuted(!isMuted);
@@ -54,7 +50,6 @@ export const FinalScore = ({
     });
   };
 
-
   const saveScoreToDatabase = async () => {
     try {
       const response = await fetch("/api/save-score", {
@@ -63,7 +58,7 @@ export const FinalScore = ({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId,  // Use the userId from props or context
+          userId, // Use the userId from props or context
           score,
           activityName,
         }),
@@ -86,7 +81,12 @@ export const FinalScore = ({
       });
     }
   };
-  
+
+  // Reload the page to retake the activity
+  const handleRetakeActivity = () => {
+    window.location.reload();
+  };
+
   return (
     <div className="bg-[#FAD8E3] w-full !h-screen">
       <div className="flex justify-between items-center px-10 py-5 h-[90px] bg-[#FAD8E3] shadow">
@@ -144,6 +144,14 @@ export const FinalScore = ({
                 className="max-w-full w-full h-auto"
               />
             </button>
+            <div className="flex justify-center items-center">
+              <button
+                className="text-[#9B59B6] text-sm mt-5 underline"
+                onClick={handleRetakeActivity}
+              >
+                Retake Activity
+              </button>
+            </div>
           </div>
         </div>
       </div>
