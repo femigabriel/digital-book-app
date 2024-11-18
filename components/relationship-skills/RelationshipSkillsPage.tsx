@@ -29,7 +29,9 @@ export const RelationshipSkillsPage = () => {
   const renderStep = () => {
     switch (step) {
       case 0:
-        return <Introducton onNextClick={handleNext} onBackClick={handleBack} />;
+        return (
+          <Introducton onNextClick={handleNext} onBackClick={handleBack} />
+        );
       case 1:
         return <SkillsList onNextClick={handleNext} onBackClick={handleBack} />;
       case 2:
@@ -46,20 +48,15 @@ export const RelationshipSkillsPage = () => {
             onBackClick={handleBack}
           />
         );
+     
       default:
-        // Ensure user is loaded before rendering FinalScore
-        if (isUserLoaded) {
-          return (
-            <FinalScore
+        return (
+          <FinalScore
             score={score}
-            userId={user?._id || ""}  
+            userId={user?._id || "Unknown User"}
             activityName="Relationship Skills"
           />
-          
-          );
-        } else {
-          return <div>Loading...</div>;
-        }
+        );
     }
   };
 

@@ -6,25 +6,26 @@ import { useRouter } from "next/navigation";
 import { SoundOutlined, MutedOutlined } from "@ant-design/icons";
 
 // export const BusStopFinalScore = () => {
-  interface Props {
-    selectedAnswer: number | null;
-    onBackClick: () => any;
-    userId: string;
-    activityName: string;
-    score: number;  
-  }
-  
-  export const BusStopFinalScore = ({
-    selectedAnswer,
-    onBackClick,
-    userId,
-    activityName,
-    score,  
-  }: Props) => {
+interface Props {
+  selectedAnswer: number | null;
+  onBackClick: () => any;
+  userId: string;
+  activityName: string;
+  score: number;
+}
+
+export const BusStopFinalScore = ({
+  selectedAnswer,
+  onBackClick,
+  userId,
+  activityName,
+  score,
+}: Props) => {
   const resultContext = useContext(ResultContext);
   const { state } = resultContext;
   const [isMuted, setIsMuted] = useState(false);
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   // Sound settings and confetti
   const celebrationSound = "/sounds/756229__timbre__yeah-man-rock-roll.flac";
@@ -69,44 +70,45 @@ import { SoundOutlined, MutedOutlined } from "@ant-design/icons";
     });
   };
 
-
-
   // Reload the page to retake the activity
   const handleRetakeActivity = () => {
     window.location.reload();
   };
+
   const saveScoreToDatabase = async () => {
+    setLoading(true); // Show loading spinner on button
     try {
       const response = await fetch("/api/save-score", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          userId,
-          score,
-          activityName,
-        }),
+        body: JSON.stringify({ userId, score, activityName }),
       });
+
+      const result = await response.json();
+
       if (response.ok) {
         notification.success({
           message: "Score Saved",
-          description: "Your score has been saved successfully.",
+          description: "Your score was saved successfully!",
         });
       } else {
         notification.error({
-          message: "Error",
-          description: "Failed to save score. Please try again.",
+          message: "Failed to Save",
+          description:
+            result.message || "An error occurred while saving your score.",
         });
       }
     } catch (error) {
       notification.error({
         message: "Error",
-        description: "An unexpected error occurred.",
+        description: "Unable to save your score. Please try again later.",
       });
+    } finally {
+      setLoading(false); // Hide loading spinner on button
     }
   };
-
 
   return (
     <div className="bg-[#FAD8E3] w-full !h-screen">
@@ -154,10 +156,21 @@ import { SoundOutlined, MutedOutlined } from "@ant-design/icons";
             <p className="text-md mt-4 text-[#333]">{getFeedbackMessage()}</p>
             <div className="flex justify-center items-center mt-5">
               <button
-                className="bg-[#8BC34A] text-white py-2 px-4 rounded-full text-lg font-bold hover:bg-[#7CB342] transition-all"
+                className="bg-[#FAD8E3] w-full flex justify-center items-center"
                 onClick={saveScoreToDatabase}
+                disabled={loading}
               >
-                Save Score 📝
+                {loading ? (
+                  <span className="text-sm text-gray-500">Saving...</span>
+                ) : (
+                  <Image
+                    src="/images/Submit Button.svg"
+                    alt="save score"
+                    width={64}
+                    height={64}
+                    className="max-w-full w-full h-auto"
+                  />
+                )}
               </button>
             </div>
             <button

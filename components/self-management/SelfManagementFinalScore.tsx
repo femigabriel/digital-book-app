@@ -21,6 +21,8 @@ export const SelfManagementFinalScore = ({
   const [showConfetti, setShowConfetti] = useState(false);
   const celebrationSound = "/sounds/756229__timbre__yeah-man-rock-roll.flac";
   const correctAnswer = 6;
+  const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     if (selectedAnswer === correctAnswer) {
@@ -32,34 +34,37 @@ export const SelfManagementFinalScore = ({
   }, [selectedAnswer]);
 
   const saveScoreToDatabase = async () => {
+    setLoading(true); // Show loading spinner on button
     try {
       const response = await fetch("/api/save-score", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          userId,
-          score,
-          activityName,
-        }),
+        body: JSON.stringify({ userId, score, activityName }),
       });
+
+      const result = await response.json();
+
       if (response.ok) {
         notification.success({
           message: "Score Saved",
-          description: "Your score has been saved successfully.",
+          description: "Your score was saved successfully!",
         });
       } else {
         notification.error({
-          message: "Error",
-          description: "Failed to save score. Please try again.",
+          message: "Failed to Save",
+          description:
+            result.message || "An error occurred while saving your score.",
         });
       }
     } catch (error) {
       notification.error({
         message: "Error",
-        description: "An unexpected error occurred.",
+        description: "Unable to save your score. Please try again later.",
       });
+    } finally {
+      setLoading(false); // Hide loading spinner on button
     }
   };
 
@@ -108,11 +113,22 @@ export const SelfManagementFinalScore = ({
               </p>
             )}
             <button
-              className="bg-[#8BC34A] text-white py-2 px-4 rounded-full text-lg font-bold hover:bg-[#7CB342] transition-all"
-              onClick={saveScoreToDatabase}
-            >
-              Save Score 📝
-            </button>
+                className="bg-[#FAD8E3] w-full flex justify-center items-center"
+                onClick={saveScoreToDatabase}
+                disabled={loading}
+              >
+                {loading ? (
+                  <span className="text-sm text-gray-500">Saving...</span>
+                ) : (
+                  <Image
+                    src="/images/Submit Button.svg"
+                    alt="save score"
+                    width={64}
+                    height={64}
+                    className="max-w-full w-full h-auto"
+                  />
+                )}
+              </button>
             <button
               className="text-[#9B59B6] text-sm mt-5 underline"
               onClick={handleRetakeActivity}

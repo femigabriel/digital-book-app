@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Modal, notification } from "antd";
 import { useRouter } from "next/navigation";
-import { SoundOutlined, MutedOutlined } from "@ant-design/icons"; // Import icons
+import { SoundOutlined, MutedOutlined } from "@ant-design/icons";
 
 interface FinalScoreProps {
   score: number;
@@ -17,6 +17,7 @@ export const FinalScore = ({
 }: FinalScoreProps) => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [loading, setLoading] = useState(false); // For button loading state
 
   const celebrationSound = "/sounds/756229__timbre__yeah-man-rock-roll.flac";
   const router = useRouter();
@@ -51,34 +52,37 @@ export const FinalScore = ({
   };
 
   const saveScoreToDatabase = async () => {
+    setLoading(true); // Show loading spinner on button
     try {
       const response = await fetch("/api/save-score", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          userId, // Use the userId from props or context
-          score,
-          activityName,
-        }),
+        body: JSON.stringify({ userId, score, activityName }),
       });
+
+      const result = await response.json();
+
       if (response.ok) {
         notification.success({
           message: "Score Saved",
-          description: "Your score has been saved successfully.",
+          description: "Your score was saved successfully!",
         });
       } else {
         notification.error({
-          message: "Error",
-          description: "Failed to save score. Please try again.",
+          message: "Failed to Save",
+          description:
+            result.message || "An error occurred while saving your score.",
         });
       }
     } catch (error) {
       notification.error({
         message: "Error",
-        description: "An unexpected error occurred.",
+        description: "Unable to save your score. Please try again later.",
       });
+    } finally {
+      setLoading(false); // Hide loading spinner on button
     }
   };
 
@@ -133,16 +137,21 @@ export const FinalScore = ({
               <p className="text-2xl text-[#303030] mb-1">{`You scored ${score}/3!`}</p>
             </div>
             <button
-              className="bg-[#FAD8E3] w-full"
+              className="bg-[#FAD8E3] w-full flex justify-center items-center"
               onClick={saveScoreToDatabase}
+              disabled={loading}
             >
-              <Image
-                src="/images/Submit Button.svg"
-                alt="save score"
-                width={64}
-                height={64}
-                className="max-w-full w-full h-auto"
-              />
+              {loading ? (
+                <span className="text-sm text-gray-500">Saving...</span>
+              ) : (
+                <Image
+                  src="/images/Submit Button.svg"
+                  alt="save score"
+                  width={64}
+                  height={64}
+                  className="max-w-full w-full h-auto"
+                />
+              )}
             </button>
             <div className="flex justify-center items-center">
               <button
