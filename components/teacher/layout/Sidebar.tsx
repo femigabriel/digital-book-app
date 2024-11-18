@@ -9,9 +9,9 @@ const Sidebar = () => {
   const navItems = [
     { href: "/teacher-dashboard", label: "Dashboard", icon: "/icons/Grid.svg", path: "/teacher-dashboard" },
     { href: "/teacher-dashboard/activities", label: "Activities", icon: "/icons/Activity.svg", path: "/teacher-dashboard/activities" },
-    { href: "/teacher-dashboard/teachers", label: "Teachers", icon: "/icons/Users.svg", path: "/teacher-dashboard/teachers" },
+    { href: "/teacher-dashboard", label: "Teachers", icon: "/icons/Users.svg", path: "/teacher-dashboard/teachers" },
     { href: "/teacher-dashboard/students", label: "Students", icon: "/icons/Profile 2user.svg", path: "/teacher-dashboard/students" },
-    { href: "/books", label: "Books", icon: "/icons/Book.svg", path: "/teacher-dashboard/books" },
+    { href: "/read-book", label: "Books", icon: "/icons/Book.svg", path: "/teacher-dashboard/books" },
   ];
 
   return (

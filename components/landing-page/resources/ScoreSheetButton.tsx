@@ -9,7 +9,7 @@ export const ScoreSheetButton = () => {
   const items: MenuProps["items"] = [
     {
       label: (
-        <Link href="/score">
+        <Link href="/scores">
           <div className="cursor-pointer resources">
             <Image
               src="/images/sheet1.svg"
