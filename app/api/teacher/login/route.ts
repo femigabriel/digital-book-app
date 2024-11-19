@@ -2,6 +2,10 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import Teacher from "@/models/Teacher";
 import dbConnect from "@/lib/dbConnect"; // Make sure dbConnect is configured
+import jwt from "jsonwebtoken"; // Import JWT
+
+// Secret key for JWT (should be stored in .env for security)
+const JWT_SECRET = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY0BleGFtcGxlLmNvbSIsInVzZXJJZCI6IjY2YmUxYzkxOGMwZTk0Nzk3ZWI4NzE1YiIsImlhdCI6MTczMTk3NDc1NX0.4iIogtoQUkMFXg2Malzs-qOl5iT7CQxZDF77x9OZX74"; 
 
 export async function POST(request: Request) {
   try {
@@ -37,11 +41,19 @@ export async function POST(request: Request) {
       );
     }
 
-    // You can generate a JWT token here for session management if needed
-    // const token = generateJWT(teacher._id); // Token generation logic
+    // Generate JWT token
+    const token = jwt.sign(
+      { teacherId: teacher._id },
+      JWT_SECRET,
+      { expiresIn: '1h' } // Token expires in 1 hour
+    );
 
+    // Log the token to the console (for debugging purposes)
+    // console.log("Generated JWT Token:", token);
+
+    // Return the token along with a success message
     return NextResponse.json(
-      { message: "Login successful!" },
+      { message: "Login successful!", token }, // Send token in the response
       { status: 200 }
     );
   } catch (error) {

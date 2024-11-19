@@ -10,33 +10,38 @@ const TeacherLogin = () => {
 
   const onFinish = async (values: any) => {
     const { email, password } = values;
-
-    setLoading(true); // Show loading spinner while submitting the form
-
+  
+    setLoading(true);
+  
     try {
       const response = await fetch("/api/teacher/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-
+  
       const data = await response.json();
-
-      setLoading(false); // Hide loading spinner
-
+      setLoading(false);
+  
       if (response.ok) {
         message.success(data.message);
-        // Redirect to teacher dashboard or wherever after login
+  
+        // Store the token in localStorage using "authToken"
+        localStorage.setItem("authToken", data.token);
+  
+        // Redirect to the teacher dashboard after successful login
         router.push("/teacher-dashboard");
       } else {
         message.error(data.error);
       }
     } catch (error) {
-      setLoading(false); // Hide loading spinner on error
+      setLoading(false);
       console.error("Login Error:", error);
       message.error("Something went wrong. Please try again.");
     }
   };
+  
+  
 
   return (
     <div className=" min-h-screen teacher-auth">
