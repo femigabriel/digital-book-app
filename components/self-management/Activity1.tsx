@@ -85,10 +85,10 @@ export const Activity1 = ({ onNextClick, onBackClick }: Props) => {
     const isCorrect = question.correctAns === answer;
   
     // Log the correct answer and the selected answer
-    console.log(`Question: ${question.question}`);
-    console.log(`Selected Answer: ${answer}`);
-    console.log(`Correct Answer: ${question.correctAns}`);
-    console.log(`Is Correct: ${isCorrect}`);
+    // console.log(`Question: ${question.question}`);
+    // console.log(`Selected Answer: ${answer}`);
+    // console.log(`Correct Answer: ${question.correctAns}`);
+    // console.log(`Is Correct: ${isCorrect}`);
   
     // Update the context with the correct or incorrect answer
     resultContext.dispatch({

@@ -458,3 +458,6 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
   align-items: center;
   }
+  .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #d9d9d9;
+  }

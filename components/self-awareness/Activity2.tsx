@@ -41,7 +41,7 @@ export const Activity2 = ({
           </button>
         </div>
       </div>
-      <div className="self-awareness w-full h-screen bg-[#FFFEE9]">
+      <div className="self-awareness w-full !h-screen bg-[#FFFEE9]">
         <div className="bg-[#FFFEE9] w-full max-w-[750px] rounded-[10px] shadow-xl">
           <div className="px-5 py-5">
             <div className="flex flex-col justify-center items-center">

@@ -48,7 +48,7 @@ export const TeacherZoneHero = () => {
             />
           </div>
         </Link>
-        <Link href="/teacher-chat">
+        <Link href="/teacher-zone">
           <div className="cursor-pointer">
             <Image
               src="/images/Teacher Chat Button.svg"
