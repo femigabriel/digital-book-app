@@ -1,6 +1,8 @@
 import React from "react";
 import { Radio } from "antd";
 
+
+
 interface SelfManagementCardProps {
   question: {
     id: number;
@@ -10,8 +12,9 @@ interface SelfManagementCardProps {
   };
   index: number;
   selectedValue: number | null;
-  onSelect: (value: number) => void;
+  onSelect: (value: number, answer: string) => void; // Updated to include the answer
 }
+
 
 export const SelfManagementCard: React.FC<SelfManagementCardProps> = ({
   question,
@@ -24,8 +27,7 @@ export const SelfManagementCard: React.FC<SelfManagementCardProps> = ({
   return (
     <div
       key={index}
-      className={`flex gap-3 w-full mb-5 cursor-pointer " : ""}`}
-      onClick={() => onSelect(index + 1)}
+      className="flex gap-3 w-full mb-5 cursor-pointer"
     >
       <div
         className="px-5 py-5 w-[47px] h-[114px] flex items-center justify-center border-2 rounded-md"
@@ -38,11 +40,16 @@ export const SelfManagementCard: React.FC<SelfManagementCardProps> = ({
         style={{ backgroundColor: question.bg, borderColor: question.color }}
       >
         <p className="text-base text-[#303030]">{question.question}</p>
-        <Radio.Group  className="mt-3">
-          <Radio value="Yes">Yes</Radio>
-          <Radio value="No">No</Radio>
-        </Radio.Group>
+        <Radio.Group
+  className="mt-3"
+  onChange={(e) => onSelect(index + 1, e.target.value)} // Pass index and selected answer
+>
+  <Radio value="Yes">Yes</Radio>
+  <Radio value="No">No</Radio>
+</Radio.Group>
+
       </div>
     </div>
   );
 };
+

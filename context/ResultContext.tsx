@@ -12,28 +12,48 @@ const initialState = {
   results: [],
   busStopResults: [],
   power: [],
-  charlie: []
+  charlie: [],
+  self: [],
 };
 interface StateProp {
   results: ResultInterface[];
   busStopResults: ResultInterface[]
   power: ResultInterface[]
   charlie: ResultInterface[]
+  self:  ResultInterface[]
 }
-const reducer = (state: any, { type, payload }: any) => {
+const reducer = (state: StateProp, { type, payload }: any) => {
   switch (type) {
     case "setResults":
-      return (state = { ...state, results: payload });
-      case "setBusStopResults":
-        return (state = { ...state, busStopResults: payload });
-        case "setPowerResults":
-        return (state = { ...state, power: payload });
-        case "setCharlieResults":
-          return (state = { ...state, charlie: payload });
+      return {
+        ...state,
+        results: payload,
+      };
+    case "setBusStopResults":
+      return {
+        ...state,
+        busStopResults: payload,
+      };
+    case "setPowerResults":
+      return {
+        ...state,
+        power: payload,
+      };
+    case "setCharlieResults":
+      return {
+        ...state,
+        charlie: payload,
+      };
+    case "setSelf":
+      return {
+        ...state,
+        self: payload, 
+      };
     default:
       return state;
   }
 };
+
 
 export const ResultContext = createContext<{
   state: StateProp | undefined;

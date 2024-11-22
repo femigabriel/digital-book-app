@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import { SelfManagementCard } from "./SelfManagementCard";
+import { ResultContext } from "@/context/ResultContext";
 
 interface Props {
   onNextClick: () => any;
@@ -13,6 +14,7 @@ const questions = [
     question: "'Thank you for everything,' Mya said.",
     color: "#FF9966",
     bg: "#FFCC99",
+    correctAns: "Yes",
   },
   {
     id: 2,
@@ -20,18 +22,21 @@ const questions = [
       "Charlie wanted to shout at the girls that laughed at Mya. Instead of shouting she explained that Mya needed help.",
     color: "#FFD4A0",
     bg: "#FFF2BF",
+    correctAns: "Yes",
   },
   {
     id: 3,
     question: "Charlie and Mya decided to rush downtown to save Mya’s dad.",
     color: "#FF9A9A",
     bg: "#F8F8F8",
+    correctAns: "No",
   },
   {
     id: 4,
     question: "Mya asked Charlie if they were old enough to catch the bus.",
     color: "#FF9A9A",
     bg: "#FFCCCC",
+    correctAns: "Yes",
   },
   {
     id: 5,
@@ -39,6 +44,7 @@ const questions = [
       "Charlie and Mya looked straight ahead as they walked down the street.",
     color: "#FF99CC",
     bg: "#FFCCFF",
+    correctAns: "Yes",
   },
   {
     id: 6,
@@ -46,6 +52,7 @@ const questions = [
       "Mya continued to worry that she would never see her dad again. She did not know if Charlie’s mom could really help.",
     color: "#A1D0FF",
     bg: "#CCECFF",
+    correctAns: "No",
   },
   {
     id: 7,
@@ -53,6 +60,7 @@ const questions = [
       "Mya did not comb her hair because she was so upset when she found out about her dad.",
     color: "#A0E8D0",
     bg: "#CCF6E6",
+    correctAns: "No",
   },
   {
     id: 8,
@@ -60,15 +68,41 @@ const questions = [
       "Charlie was determined to help her friend. She tried to make a good plan for what they should do.",
     color: "#99FF99",
     bg: "#CCFFCC",
+    correctAns: "Yes",
   },
 ];
 
 export const Activity1 = ({ onNextClick, onBackClick }: Props) => {
   const [selectedValue, setSelectedValue] = useState<number | null>(null);
+  const resultContext = useContext(ResultContext);
+  const { state } = resultContext;
 
-  const handleSelect = (value: number) => {
-    setSelectedValue(value);
+
+
+
+  const handleSelect = (value: number, answer: string) => {
+    const question = questions[value]; // Using value to get the correct question
+    const isCorrect = question.correctAns === answer;
+  
+    // Log the correct answer and the selected answer
+    console.log(`Question: ${question.question}`);
+    console.log(`Selected Answer: ${answer}`);
+    console.log(`Correct Answer: ${question.correctAns}`);
+    console.log(`Is Correct: ${isCorrect}`);
+  
+    // Update the context with the correct or incorrect answer
+    resultContext.dispatch({
+      type: "setSelf",
+      payload: [
+        ...(state?.self ?? []), // Append to the self results in the state
+        { isCorrect, id: question.id.toString() },
+      ],
+    });
   };
+  
+  
+  
+  
 
   return (
     <div className="w-full">

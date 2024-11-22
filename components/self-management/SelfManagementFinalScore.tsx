@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import { Modal, notification } from "antd";
+import Image from "next/image";
 
-// Add `score` to Props interface
 interface Props {
   selectedAnswer: number | null;
   onBackClick: () => any;
   userId: string;
   activityName: string;
-  score: number;  
+  score: number;
+  correctCount: number; // New prop for correct answers count
+  missedCount: number; // New prop for missed answers count
 }
 
 export const SelfManagementFinalScore = ({
@@ -16,13 +17,14 @@ export const SelfManagementFinalScore = ({
   onBackClick,
   userId,
   activityName,
-  score,  
+  score,
+  correctCount,
+  missedCount,
 }: Props) => {
   const [showConfetti, setShowConfetti] = useState(false);
   const celebrationSound = "/sounds/756229__timbre__yeah-man-rock-roll.flac";
   const correctAnswer = 6;
   const [loading, setLoading] = useState(false);
-
 
   useEffect(() => {
     if (selectedAnswer === correctAnswer) {
@@ -34,7 +36,7 @@ export const SelfManagementFinalScore = ({
   }, [selectedAnswer]);
 
   const saveScoreToDatabase = async () => {
-    setLoading(true); // Show loading spinner on button
+    setLoading(true);
     try {
       const response = await fetch("/api/save-score", {
         method: "POST",
@@ -64,7 +66,7 @@ export const SelfManagementFinalScore = ({
         description: "Unable to save your score. Please try again later.",
       });
     } finally {
-      setLoading(false); // Hide loading spinner on button
+      setLoading(false);
     }
   };
 
@@ -98,43 +100,41 @@ export const SelfManagementFinalScore = ({
                 height={50}
               />
             </div>
-            <h2 className="text-4xl font-bold text-[#FF4500] mb-3">
+            <h2 className="text-4xl font-bold text-[#FF4500] mb-3 text-center">
               {selectedAnswer === correctAnswer
                 ? "🎉 Great job! 🎉"
                 : "Oops! Almost there!"}
             </h2>
-            <p className="text-2xl font-semibold text-[#4CAF50] mb-1">
-              You selected answer {selectedAnswer}.
+            <p className="text-2xl text-center font-semibold text-[#4CAF50] mb-1">
+              Your Score: {score}% ({correctCount} correct, {missedCount}{" "}
+              missed)
             </p>
-            {selectedAnswer !== correctAnswer && (
-              <p className="text-base text-[#FF6347]">
-                The correct answer is number {correctAnswer}. Try again to
-                improve!
-              </p>
-            )}
+      
             <button
-                className="bg-[#FAD8E3] w-full flex justify-center items-center"
-                onClick={saveScoreToDatabase}
-                disabled={loading}
-              >
-                {loading ? (
-                  <span className="text-sm text-gray-500">Saving...</span>
-                ) : (
-                  <Image
-                    src="/images/Submit Button.svg"
-                    alt="save score"
-                    width={64}
-                    height={64}
-                    className="max-w-full w-full h-auto"
-                  />
-                )}
-              </button>
+              className="bg-[#FAD8E3] w-full flex justify-center items-center"
+              onClick={saveScoreToDatabase}
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="text-sm text-gray-500">Saving...</span>
+              ) : (
+                <Image
+                  src="/images/Submit Button.svg"
+                  alt="save score"
+                  width={64}
+                  height={64}
+                  className="max-w-full w-full h-auto"
+                />
+              )}
+            </button>
+            <div className="flex justify-center items-center">
             <button
-              className="text-[#9B59B6] text-sm mt-5 underline"
+              className="text-[#9B59B6]  text-sm mt-5 underline"
               onClick={handleRetakeActivity}
             >
               Retake Activity
             </button>
+            </div>
           </div>
         </div>
       </div>
@@ -142,7 +142,6 @@ export const SelfManagementFinalScore = ({
   );
 };
 
-// Confetti and Balloon Animation Component
 const ConfettiAnimation = () => {
   return (
     <div className="confetti-container">
