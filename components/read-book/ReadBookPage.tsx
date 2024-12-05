@@ -43,7 +43,7 @@ export default function ReadBookPage() {
               <Image
                 width={680}
                 height={537}
-                src="/assets/illustrators/cover-new.svg"
+                src="/assets/illustrators/book flip.svg"
                 className="w-full max-w-[680px] h-full max-h-[537px] cursor-pointer"
                 alt="avatar"
               />
